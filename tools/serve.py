@@ -12,7 +12,9 @@ POTENTIAL 战队官网 —— 局域网静态服务器 + 图片管理后台
 后台管理:  http://<本机IP>/admin
 """
 import argparse
+import gzip
 import hashlib
+import io
 import hmac
 import json
 import mimetypes
@@ -28,7 +30,7 @@ import time
 import uuid
 import http.server
 import socketserver
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GALLERY_DIR = os.path.join(ROOT, "assets", "img", "gallery")
@@ -701,6 +703,63 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return self._json({"ok": True, "state": state})
 
     # ---------- 静态服务细节
+    # 只公开站点本身；源码、工具、git 仓库、备份、后台页面一律 404
+    BLOCKED_TOP = {'tools', 'dist', 'node_modules', 'admin.html', 'readme.md', 'serve.sh', 'package.json', 'package-lock.json'}
+    BLOCKED_SUFFIX = ('.bak', '.tmp', '.py', '.sh', '.mjs', '.md', '.service', '.log', '.tar.gz')
+
+    def _is_blocked(self, path):
+        parts = [p for p in unquote(path).split('/') if p]
+        if any(p.startswith('.') for p in parts):
+            return True
+        if parts and parts[0].lower() in self.BLOCKED_TOP:
+            return True
+        return bool(parts) and parts[-1].lower().endswith(self.BLOCKED_SUFFIX)
+
+    # ---------- gzip + ETag
+    COMPRESSIBLE = ('.html', '.css', '.js', '.json', '.svg', '.txt', '.xml')
+    _gz_cache = {}  # fs path -> (mtime_ns, size, gzipped bytes)
+
+    def send_head(self):
+        path = urlparse(self.path).path
+        if self._is_blocked(path):
+            self.send_error(404)
+            return None
+        fs = self.translate_path(self.path)
+        if os.path.isdir(fs) and path.endswith('/'):
+            fs = os.path.join(fs, 'index.html')
+        if (not os.path.isfile(fs) or not fs.lower().endswith(self.COMPRESSIBLE)
+                or 'gzip' not in (self.headers.get('Accept-Encoding') or '')):
+            return super().send_head()
+        try:
+            st = os.stat(fs)
+        except OSError:
+            return super().send_head()
+        etag = '"%x-%x-gz"' % (st.st_mtime_ns, st.st_size)
+        if self.headers.get('If-None-Match') == etag:
+            self.send_response(304)
+            self.send_header('ETag', etag)
+            self.send_header('Vary', 'Accept-Encoding')
+            self.end_headers()
+            return None
+        hit = self._gz_cache.get(fs)
+        if hit and hit[0] == st.st_mtime_ns and hit[1] == st.st_size:
+            body = hit[2]
+        else:
+            with open(fs, 'rb') as f:
+                body = gzip.compress(f.read(), 6, mtime=0)
+            self._gz_cache[fs] = (st.st_mtime_ns, st.st_size, body)
+        ctype = self.guess_type(fs)
+        if ctype.startswith('text/') or ctype in ('application/json', 'application/javascript'):
+            ctype += '; charset=utf-8'
+        self.send_response(200)
+        self.send_header('Content-Type', ctype)
+        self.send_header('Content-Encoding', 'gzip')
+        self.send_header('Vary', 'Accept-Encoding')
+        self.send_header('ETag', etag)
+        self.send_header('Content-Length', str(len(body)))
+        self.end_headers()
+        return io.BytesIO(body)
+
     def list_directory(self, path):
         self.send_error(403, "Directory listing is disabled")
         return None
@@ -713,6 +772,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         else:
             # CSS / JS / HTML 每次向服务器校验，改完刷新即生效
             self.send_header("Cache-Control", "no-cache")
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("Referrer-Policy", "strict-origin-when-cross-origin")
+        self.send_header("X-Frame-Options", "SAMEORIGIN")
         super().end_headers()
 
     def log_message(self, fmt, *args):
