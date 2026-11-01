@@ -11,3 +11,7 @@ assets/img/gallery/.trash/
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# Python cache
+__pycache__/
+*.pyc
