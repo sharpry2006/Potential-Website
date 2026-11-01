@@ -3344,6 +3344,8 @@ body.nav-open .nav__drawer {
   margin-top: clamp(30px, 4vw, 46px);
   padding-top: clamp(18px, 2.4vw, 26px);
   border-top: 1px solid var(--line);
+  /* 统计数字由 JS 渲染：按「边框 + 内边距 + 数字行 + 间距 + 标签行」预留高度，避免荣誉墙被推下去（CLS） */
+  min-height: calc(1px + clamp(18px, 2.4vw, 26px) + clamp(1.7rem, 3vw, 2.5rem) + 8px + 0.62rem * 1.78);
 }
 .hall-stat b {
   display: block;
