@@ -16,7 +16,10 @@ const NAV = [
   ['join.html', '加入我们']
 ];
 
-const head = (title, desc) => `<!DOCTYPE html>
+/* 站点公开地址（GitHub Pages）。canonical / og:image 必须是绝对地址 */
+const SITE = 'https://sharpry2006.github.io/Potential-Website/';
+
+const head = (title, desc, file) => `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8" />
@@ -27,6 +30,19 @@ const head = (title, desc) => `<!DOCTYPE html>
 <meta property="og:title" content="${title}" />
 <meta property="og:description" content="${desc}" />
 <meta property="og:type" content="website" />
+<meta property="og:site_name" content="POTENTIAL" />
+<meta property="og:locale" content="zh_CN" />
+<meta property="og:url" content="${SITE}${file}" />
+<meta property="og:image" content="${SITE}assets/img/og-cover.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="POTENTIAL · 南京邮电大学机甲大师战队" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${title}" />
+<meta name="twitter:description" content="${desc}" />
+<meta name="twitter:image" content="${SITE}assets/img/og-cover.jpg" />
+<link rel="canonical" href="${SITE}${file}" />
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0d'/%3E%3Cpath d='M9 24V8h7a5 5 0 0 1 0 10h-7' fill='none' stroke='%23ff3d2e' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E" />
 <link rel="preload" href="assets/fonts/ptsans-cn-regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
@@ -126,7 +142,7 @@ const footer = `
 </html>
 `;
 
-const page = (active, title, desc, body) => head(title, desc) + header(active) + body + footer;
+const page = (active, title, desc, body) => head(title, desc, active) + header(active) + body + footer;
 
 /* ------------------------------------------------------------------ pages */
 

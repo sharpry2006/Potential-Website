@@ -92,7 +92,7 @@ writeFileSync(pjoin(DIST, '.nojekyll'), '', 'utf8');
 writeFileSync(pjoin(DIST, '404.html'), NOT_FOUND, 'utf8');
 writeFileSync(
   pjoin(DIST, 'robots.txt'),
-  'User-agent: *\nAllow: /\n',
+  'User-agent: *\nAllow: /\n\nSitemap: https://sharpry2006.github.io/Potential-Website/sitemap.xml\n',
   'utf8'
 );
 
