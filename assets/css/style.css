@@ -161,10 +161,14 @@ ol {
   color: #fff;
 }
 
-/* 后台相关提示：本地有后端才显示 */
-body.no-admin .js-admin-only {
+/* 后台相关提示：默认隐藏，探测到后端才显示（避免纯静态托管时闪出死链） */
+.js-admin-only {
   display: none !important;
 }
+body.has-admin .js-admin-only {
+  display: revert !important;
+}
+/* 公开版文案：默认显示，检测到后端时隐藏（避免和“去后台”重复） */
 body.has-admin .js-public-only {
   display: none !important;
 }
