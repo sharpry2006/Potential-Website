@@ -485,6 +485,7 @@ body::after {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-shrink: 0;
 }
 .nav__cta {
   padding: 0.62em 1.25em;
@@ -3812,12 +3813,16 @@ body.nav-open .nav__drawer {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
+  height: 32px;
+  padding: 0 10px;
   border: 1px solid var(--line);
   color: var(--txt-400);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   transition: border-color 0.35s, color 0.35s, background 0.35s;
+}
+.nav__search + .nav__cta {
+  margin-left: 2px;
 }
 .nav__search:hover {
   color: var(--txt-100);
@@ -3835,10 +3840,13 @@ body.nav-open .nav__drawer {
 .nav__search kbd {
   font-family: var(--font-num);
   font-size: 0.56rem;
+  line-height: 1;
   letter-spacing: 0.1em;
-  border: 1px solid var(--line);
-  padding: 1px 5px;
+  border: 0;
+  padding: 0;
   color: var(--txt-500);
+  background: none;
+  opacity: 0.85;
 }
 @media (max-width: 860px) {
   .nav__search kbd {
