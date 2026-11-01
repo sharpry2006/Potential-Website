@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/css/motion.css?v=4" />
 </head>
 <body>
-<a class="skip-link" href="#main">跳到主要内容</a>
+<a class="skip-link" href="#main" data-cms="results.1">跳到主要内容</a>
 <div class="scroll-bar" aria-hidden="true"></div>
 
 <header class="site-header">
@@ -38,25 +38,25 @@
       <a class="brand" href="index.html" aria-label="POTENTIAL 战队首页">
         <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
         <span class="brand__text">
-          <span class="brand__name">Potential</span>
-          <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+          <span class="brand__name" data-cms="site.1">Potential</span>
+          <span class="brand__sub" data-cms="site.2">南京邮电大学 · 机甲大师</span>
         </span>
       </a>
       <ul class="nav__links">
-        <li><a class="nav__link" href="index.html">首页</a></li>
-        <li><a class="nav__link" href="about.html">战队</a></li>
-        <li><a class="nav__link" href="robots.html">机甲与团队</a></li>
-        <li><a class="nav__link" href="gallery.html">影像</a></li>
-        <li><a class="nav__link" href="results.html" aria-current="page">战绩</a></li>
-        <li><a class="nav__link" href="hall.html">名人堂</a></li>
-        <li><a class="nav__link" href="join.html">加入我们</a></li>
+        <li><a class="nav__link" href="index.html" data-cms="site.3">首页</a></li>
+        <li><a class="nav__link" href="about.html" data-cms="site.4">战队</a></li>
+        <li><a class="nav__link" href="robots.html" data-cms="site.5">机甲与团队</a></li>
+        <li><a class="nav__link" href="gallery.html" data-cms="site.6">影像</a></li>
+        <li><a class="nav__link" href="results.html" aria-current="page" data-cms="site.7">战绩</a></li>
+        <li><a class="nav__link" href="hall.html" data-cms="site.8">名人堂</a></li>
+        <li><a class="nav__link" href="join.html" data-cms="site.9">加入我们</a></li>
       </ul>
       <div class="nav__end">
         <button class="nav__search" type="button" onclick="PotentialSearch.open()" aria-label="快速跳转">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="M16 16l4.4 4.4"/></svg>
           <kbd>⌘K</kbd>
         </button>
-        <a class="nav__cta" href="join.html">2026 招新</a>
+        <a class="nav__cta" href="join.html" data-cms="site.10">2026 招新</a>
         <button class="nav__toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span></button>
       </div>
     </nav>
@@ -64,13 +64,13 @@
 </header>
 
 <div class="nav__drawer" aria-label="移动端导航">
-  <a href="index.html"><span>首页</span><span>01</span></a>
-  <a href="about.html"><span>战队</span><span>02</span></a>
-  <a href="robots.html"><span>机甲与团队</span><span>03</span></a>
-  <a href="gallery.html"><span>影像</span><span>04</span></a>
-  <a href="results.html"><span>战绩</span><span>05</span></a>
-  <a href="hall.html"><span>名人堂</span><span>06</span></a>
-  <a href="join.html"><span>加入我们</span><span>07</span></a>
+  <a href="index.html"><span data-cms="site.11">首页</span><span>01</span></a>
+  <a href="about.html"><span data-cms="site.12">战队</span><span>02</span></a>
+  <a href="robots.html"><span data-cms="site.13">机甲与团队</span><span>03</span></a>
+  <a href="gallery.html"><span data-cms="site.14">影像</span><span>04</span></a>
+  <a href="results.html"><span data-cms="site.15">战绩</span><span>05</span></a>
+  <a href="hall.html"><span data-cms="site.16">名人堂</span><span>06</span></a>
+  <a href="join.html"><span data-cms="site.17">加入我们</span><span>07</span></a>
 </div>
 <div class="page">
 <main id="main">
@@ -79,10 +79,10 @@
     <div class="wrap">
       <div class="page-hero__inner">
         <nav class="crumbs" aria-label="面包屑">
-          <a href="index.html">首页</a><span>/</span><span>战绩</span>
+          <a href="index.html" data-cms="results.2">首页</a><span>/</span><span data-cms="results.3">战绩</span>
         </nav>
-        <h1 class="h1">战绩与赛季</h1>
-        <p class="lead page-hero__lead">
+        <h1 class="h1" data-cms="results.4">战绩与赛季</h1>
+        <p class="lead page-hero__lead" data-cms="results.5">
           记分牌不会说谎。我们用一台台整机，把赛季的努力换算成可以查证的排名。
         </p>
       </div>
@@ -94,21 +94,21 @@
       <div class="result-hero" data-reveal>
         <div>
           <div class="result-hero__medal">
-            <small>RMUL 2026 · JIANGSU</small>
-            季<span>军</span>
+            <small data-cms="results.6">RMUL 2026 · JIANGSU</small>
+            季<span data-cms="results.7">军</span>
           </div>
-          <p class="lead" style="margin-top:18px;max-width:36ch">
+          <p class="lead" style="margin-top:18px;max-width:36ch" data-cms="results.8">
             南京邮电大学在 RoboMaster 机甲大师高校联盟赛中的历史最佳战绩。
           </p>
         </div>
         <div>
           <ul class="result-hero__list">
-            <li><span>赛事</span><span>RoboMaster 2026 机甲大师高校联盟赛 · 江苏站</span></li>
-            <li><span>时间</span><span>2026 年 3 月 27 — 29 日</span></li>
-            <li><span>地点</span><span>江苏无锡 · 江阴市体育馆（赛事首度落地江阴）</span></li>
-            <li><span>规模</span><span>全国 30 支高校战队</span></li>
-            <li><span>同场强队</span><span>浙江大学 · 武汉大学 · 东南大学 · 南京理工大学 等</span></li>
-            <li><span>指导单位</span><span>南京邮电大学 工程实验教学部</span></li>
+            <li><span data-cms="results.9">赛事</span><span data-cms="results.10">RoboMaster 2026 机甲大师高校联盟赛 · 江苏站</span></li>
+            <li><span data-cms="results.11">时间</span><span data-cms="results.12">2026 年 3 月 27 — 29 日</span></li>
+            <li><span data-cms="results.13">地点</span><span data-cms="results.14">江苏无锡 · 江阴市体育馆（赛事首度落地江阴）</span></li>
+            <li><span data-cms="results.15">规模</span><span data-cms="results.16">全国 30 支高校战队</span></li>
+            <li><span data-cms="results.17">同场强队</span><span data-cms="results.18">浙江大学 · 武汉大学 · 东南大学 · 南京理工大学 等</span></li>
+            <li><span data-cms="results.19">指导单位</span><span data-cms="results.20">南京邮电大学 工程实验教学部</span></li>
           </ul>
         </div>
       </div>
@@ -118,19 +118,19 @@
 </div>
 <div class="feature-row">
         <div class="feature" data-reveal>
-          <span class="feature__k">League</span>
-          <h3>高校联盟赛 RMUL</h3>
-          <p>全国大学生机器人大赛 RoboMaster 的重要组成部分，以 3V3 对抗赛与 1V1 步兵对抗赛为主，重点考查综合运用理工科知识与工程实践的能力。</p>
+          <span class="feature__k" data-cms="results.21">League</span>
+          <h3 data-cms="results.22">高校联盟赛 RMUL</h3>
+          <p data-cms="results.23">全国大学生机器人大赛 RoboMaster 的重要组成部分，以 3V3 对抗赛与 1V1 步兵对抗赛为主，重点考查综合运用理工科知识与工程实践的能力。</p>
         </div>
         <div class="feature" data-reveal data-reveal-delay="70">
-          <span class="feature__k">Season 2026</span>
-          <h3>更智能的赛季</h3>
-          <p>2026 赛季在赛事中增设了更多自动化与智能化元素，全面考验队伍在机器人设计、视觉识别与战术策略上的综合创新能力。</p>
+          <span class="feature__k" data-cms="results.24">Season 2026</span>
+          <h3 data-cms="results.25">更智能的赛季</h3>
+          <p data-cms="results.26">2026 赛季在赛事中增设了更多自动化与智能化元素，全面考验队伍在机器人设计、视觉识别与战术策略上的综合创新能力。</p>
         </div>
         <div class="feature" data-reveal data-reveal-delay="140">
-          <span class="feature__k">Approach</span>
-          <h3>稳定性优先</h3>
-          <p>自规则发布以来，队员在高强度集训中不断攻克技术难题，以机器人性能与团队协作作为赛场上的主要胜负手。</p>
+          <span class="feature__k" data-cms="results.27">Approach</span>
+          <h3 data-cms="results.28">稳定性优先</h3>
+          <p data-cms="results.29">自规则发布以来，队员在高强度集训中不断攻克技术难题，以机器人性能与团队协作作为赛场上的主要胜负手。</p>
         </div>
       </div>
     </div>
@@ -140,11 +140,11 @@
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <span class="sec-head__index" data-reveal>赛季时间线</span>
-          <h2 class="h2" data-reveal data-reveal-delay="60">一步一步<br />走到领奖台</h2>
+          <span class="sec-head__index" data-reveal data-cms="results.30">赛季时间线</span>
+          <h2 class="h2" data-reveal data-reveal-delay="60" data-cms="results.31">一步一步<br />走到领奖台</h2>
         </div>
         <div class="sec-head__right">
-          <p class="lead" data-reveal data-reveal-delay="120">
+          <p class="lead" data-reveal data-reveal-delay="120" data-cms="results.32">
             从第一次登上联盟赛赛场，到首次站上领奖台，中间隔着无数个调试到深夜的夜晚。
           </p>
         </div>
@@ -154,41 +154,41 @@
         <div class="tl-item" data-reveal>
           <div class="tl-item__date">2026 · 03</div>
           <div class="tl-item__body">
-            <h3>RMUL 2026 江苏站 · 季军</h3>
-            <p>30 支高校队伍同场竞技，战队在小组赛与淘汰赛中稳定输出，最终夺得季军，创下南邮在该项赛事的最佳战绩。</p>
-            <span class="tl-item__tag">Best Result</span>
+            <h3 data-cms="results.33">RMUL 2026 江苏站 · 季军</h3>
+            <p data-cms="results.34">30 支高校队伍同场竞技，战队在小组赛与淘汰赛中稳定输出，最终夺得季军，创下南邮在该项赛事的最佳战绩。</p>
+            <span class="tl-item__tag" data-cms="results.35">Best Result</span>
           </div>
         </div>
         <div class="tl-item" data-reveal>
           <div class="tl-item__date">2025.10 — 2026.03</div>
           <div class="tl-item__body">
-            <h3>赛季集训：规则发布后的六个月</h3>
-            <p>自 2025 年 10 月赛事规则发布以来，队员在高强度集训中不断攻克技术难题，围绕整机稳定性与对抗策略持续迭代。</p>
-            <span class="tl-item__tag">Training</span>
+            <h3 data-cms="results.36">赛季集训：规则发布后的六个月</h3>
+            <p data-cms="results.37">自 2025 年 10 月赛事规则发布以来，队员在高强度集训中不断攻克技术难题，围绕整机稳定性与对抗策略持续迭代。</p>
+            <span class="tl-item__tag" data-cms="results.38">Training</span>
           </div>
         </div>
         <div class="tl-item" data-reveal>
           <div class="tl-item__date">2025 · 11</div>
           <div class="tl-item__body">
-            <h3>RoboMaster 校内赛 · 新生机器人对抗赛</h3>
-            <p>面向新队员的校内实战：组队、设计、装配、上场对抗，完整走通一遍赛季流程，也成为战队选拔与人才培养的重要环节。</p>
-            <span class="tl-item__tag">Grassroots</span>
+            <h3 data-cms="results.39">RoboMaster 校内赛 · 新生机器人对抗赛</h3>
+            <p data-cms="results.40">面向新队员的校内实战：组队、设计、装配、上场对抗，完整走通一遍赛季流程，也成为战队选拔与人才培养的重要环节。</p>
+            <span class="tl-item__tag" data-cms="results.41">Grassroots</span>
           </div>
         </div>
         <div class="tl-item" data-reveal>
           <div class="tl-item__date">2025 · 03</div>
           <div class="tl-item__body">
-            <h3>RMUL 2025 上海站 · 首登赛场</h3>
-            <p>战队在 RoboMaster 2025 机甲大师高校联盟赛（上海站）登场亮相，与多支成熟战队同场交手，完成从实验室到赛场的跨越。</p>
-            <span class="tl-item__tag">Debut</span>
+            <h3 data-cms="results.42">RMUL 2025 上海站 · 首登赛场</h3>
+            <p data-cms="results.43">战队在 RoboMaster 2025 机甲大师高校联盟赛（上海站）登场亮相，与多支成熟战队同场交手，完成从实验室到赛场的跨越。</p>
+            <span class="tl-item__tag" data-cms="results.44">Debut</span>
           </div>
         </div>
         <div class="tl-item" data-reveal>
           <div class="tl-item__date">2026.04 — 2026.10</div>
           <div class="tl-item__body">
-            <h3>赛季之后：技术沉淀继续进行</h3>
-            <p>联盟赛结束后，战队没有停下：轮腿底盘、飞镖系统与自研电调等方向继续推进，并把过程记录成公开的开发日志。</p>
-            <span class="tl-item__tag">Off-season</span>
+            <h3 data-cms="results.45">赛季之后：技术沉淀继续进行</h3>
+            <p data-cms="results.46">联盟赛结束后，战队没有停下：轮腿底盘、飞镖系统与自研电调等方向继续推进，并把过程记录成公开的开发日志。</p>
+            <span class="tl-item__tag" data-cms="results.47">Off-season</span>
           </div>
         </div>
       </div>
@@ -199,43 +199,43 @@
     <div class="wrap">
       <div class="split">
         <div>
-          <p class="eyebrow" data-reveal>Matches</p>
-          <h2 class="h2 mt-m" data-reveal data-reveal-delay="60">交手记录</h2>
-          <p class="lead mt-m" data-reveal data-reveal-delay="120">
+          <p class="eyebrow" data-reveal data-cms="results.48">Matches</p>
+          <h2 class="h2 mt-m" data-reveal data-reveal-delay="60" data-cms="results.49">交手记录</h2>
+          <p class="lead mt-m" data-reveal data-reveal-delay="120" data-cms="results.50">
             部分可查证的比赛场次。完整赛程与比分请以 RoboMaster 官方赛事记录为准。
           </p>
         </div>
         <div class="matches" data-reveal data-reveal-delay="120">
           <div class="match">
             <span class="match__date">2026.03.29</span>
-            <span class="match__vs">RMUL 2026 江苏站 第 56 场 · 对阵 <b>江南大学（霞客湾校区）SHARK 战队</b></span>
-            <span class="match__tag">RMUL</span>
+            <span class="match__vs">RMUL 2026 江苏站 第 56 场 · 对阵 <b data-cms="results.51">江南大学（霞客湾校区）SHARK 战队</b></span>
+            <span class="match__tag" data-cms="results.52">RMUL</span>
           </div>
           <div class="match">
             <span class="match__date">2026.03.28</span>
-            <span class="match__vs">RMUL 2026 江苏站 第 40 场 · 对阵 <b>集美大学 科来战队</b></span>
-            <span class="match__tag">RMUL</span>
+            <span class="match__vs">RMUL 2026 江苏站 第 40 场 · 对阵 <b data-cms="results.53">集美大学 科来战队</b></span>
+            <span class="match__tag" data-cms="results.54">RMUL</span>
           </div>
           <div class="match">
             <span class="match__date">2025.03.29</span>
-            <span class="match__vs">RMUL 2025 上海站 第 42 场 · 对阵 <b>常州大学 Climber 战队</b></span>
-            <span class="match__tag">RMUL</span>
+            <span class="match__vs">RMUL 2025 上海站 第 42 场 · 对阵 <b data-cms="results.55">常州大学 Climber 战队</b></span>
+            <span class="match__tag" data-cms="results.56">RMUL</span>
           </div>
           <div class="match">
             <span class="match__date">2025.03</span>
-            <span class="match__vs">RMUL 2025 上海站 · 首次参加 RoboMaster 高校联盟赛</span>
-            <span class="match__tag">Debut</span>
+            <span class="match__vs" data-cms="results.57">RMUL 2025 上海站 · 首次参加 RoboMaster 高校联盟赛</span>
+            <span class="match__tag" data-cms="results.58">Debut</span>
           </div>
         </div>
       </div>
 
       <div class="sec-head" style="margin-top:clamp(50px,7vw,96px)">
         <div>
-          <span class="sec-head__index">赛事体系</span>
-          <h2 class="h2">我们打的<br />是什么比赛</h2>
+          <span class="sec-head__index" data-cms="results.59">赛事体系</span>
+          <h2 class="h2" data-cms="results.60">我们打的<br />是什么比赛</h2>
         </div>
         <div class="sec-head__right">
-          <p class="lead">
+          <p class="lead" data-cms="results.61">
             RoboMaster 机甲大师赛由大疆创新发起，是全国大学生机器人大赛的重要组成部分。
             不同赛事形式对应不同的技术侧重，也是我们安排研发重心的依据。
           </p>
@@ -244,45 +244,45 @@
 
       <div class="league-grid">
         <article class="league" data-reveal>
-          <span class="league__k">RMUL</span>
-          <h3>高校联盟赛</h3>
-          <span class="league__en">University League</span>
-          <p>以 3V3 对抗赛与 1V1 步兵对抗赛为主，重点考查机器人设计、视觉识别与战术配合的综合能力，
+          <span class="league__k" data-cms="results.62">RMUL</span>
+          <h3 data-cms="results.63">高校联盟赛</h3>
+          <span class="league__en" data-cms="results.64">University League</span>
+          <p data-cms="results.65">以 3V3 对抗赛与 1V1 步兵对抗赛为主，重点考查机器人设计、视觉识别与战术配合的综合能力，
             也是多数队伍进入 RoboMaster 的起点。</p>
           <ul class="league__list">
-            <li><span>形式</span><span>3V3 团队对抗 / 1V1 步兵对抗</span></li>
-            <li><span>侧重</span><span>整机稳定性与团队协作</span></li>
+            <li><span data-cms="results.66">形式</span><span data-cms="results.67">3V3 团队对抗 / 1V1 步兵对抗</span></li>
+            <li><span data-cms="results.68">侧重</span><span data-cms="results.69">整机稳定性与团队协作</span></li>
           </ul>
         </article>
 
         <article class="league" data-reveal data-reveal-delay="70">
-          <span class="league__k">RMUC</span>
-          <h3>超级对抗赛</h3>
-          <span class="league__en">University Championship</span>
-          <p>完整的兵种体系与更复杂的战场机制：英雄、工程、步兵、哨兵、空中与飞镖协同作战，
+          <span class="league__k" data-cms="results.70">RMUC</span>
+          <h3 data-cms="results.71">超级对抗赛</h3>
+          <span class="league__en" data-cms="results.72">University Championship</span>
+          <p data-cms="results.73">完整的兵种体系与更复杂的战场机制：英雄、工程、步兵、哨兵、空中与飞镖协同作战，
             对系统化工程能力提出更高要求。</p>
           <ul class="league__list">
-            <li><span>形式</span><span>多兵种协同的完整对抗</span></li>
-            <li><span>侧重</span><span>系统集成与战术执行</span></li>
+            <li><span data-cms="results.74">形式</span><span data-cms="results.75">多兵种协同的完整对抗</span></li>
+            <li><span data-cms="results.76">侧重</span><span data-cms="results.77">系统集成与战术执行</span></li>
           </ul>
         </article>
 
         <article class="league" data-reveal data-reveal-delay="140">
-          <span class="league__k">单项</span>
-          <h3>单项赛</h3>
-          <span class="league__en">Technical Challenge</span>
-          <p>聚焦单一技术方向的专项比拼，例如步兵竞速、工程取弹与算法挑战，
+          <span class="league__k" data-cms="results.78">单项</span>
+          <h3 data-cms="results.79">单项赛</h3>
+          <span class="league__en" data-cms="results.80">Technical Challenge</span>
+          <p data-cms="results.81">聚焦单一技术方向的专项比拼，例如步兵竞速、工程取弹与算法挑战，
             适合在特定模块上深入打磨。</p>
           <ul class="league__list">
-            <li><span>形式</span><span>单一兵种 / 单一技能</span></li>
-            <li><span>侧重</span><span>技术深度与极致调试</span></li>
+            <li><span data-cms="results.82">形式</span><span data-cms="results.83">单一兵种 / 单一技能</span></li>
+            <li><span data-cms="results.84">侧重</span><span data-cms="results.85">技术深度与极致调试</span></li>
           </ul>
         </article>
       </div>
 
       <div class="notice mt-l" data-reveal>
-        <span>src</span>
-        <p><b>资料来源：</b>南京邮电大学官网《南邮获 RoboMaster 2026 机甲大师高校联盟赛季军》（2026-03-30）、RoboMaster 官方赛事视频与战队 B 站公开投稿。赛季排名与规则细节以官方最终公告为准。</p>
+        <span data-cms="results.86">src</span>
+        <p><b data-cms="results.87">资料来源：</b>南京邮电大学官网《南邮获 RoboMaster 2026 机甲大师高校联盟赛季军》（2026-03-30）、RoboMaster 官方赛事视频与战队 B 站公开投稿。赛季排名与规则细节以官方最终公告为准。</p>
       </div>
     </div>
   </section>
@@ -296,38 +296,38 @@
         <a class="brand" href="index.html">
           <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
           <span class="brand__text">
-            <span class="brand__name">Potential</span>
-            <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+            <span class="brand__name" data-cms="site.18">Potential</span>
+            <span class="brand__sub" data-cms="site.19">南京邮电大学 · 机甲大师</span>
           </span>
         </a>
-        <p>潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
+        <p data-cms="site.20">潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4 data-cms="site.21">Navigation</h4>
         <ul>
-          <li><a href="about.html">战队简介</a></li>
-          <li><a href="robots.html">机甲与团队</a></li>
-          <li><a href="results.html">战绩与赛季</a></li>
-          <li><a href="join.html">加入我们</a></li>
+          <li><a href="about.html" data-cms="site.22">战队简介</a></li>
+          <li><a href="robots.html" data-cms="site.23">机甲与团队</a></li>
+          <li><a href="results.html" data-cms="site.24">战绩与赛季</a></li>
+          <li><a href="join.html" data-cms="site.25">加入我们</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-cms="site.26">Contact</h4>
         <ul>
-          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener">B 站 · 南邮 Potential 战队</a></li>
-          <li><span>南京邮电大学仙林校区</span></li>
-          <li><span>南京市栖霞区文苑路 9 号</span></li>
-          <li><span>依托 · 工程实验教学部</span></li>
+          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener" data-cms="site.27">B 站 · 南邮 Potential 战队</a></li>
+          <li><span data-cms="site.28">南京邮电大学仙林校区</span></li>
+          <li><span data-cms="site.29">南京市栖霞区文苑路 9 号</span></li>
+          <li><span data-cms="site.30">依托 · 工程实验教学部</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> NJUPT Potential Robotics Team · 本站为校内展示用途</span>
-      <span class="footer-bottom__note">RoBoMaster is a trademark of DJI</span>
+      <span class="footer-bottom__note" data-cms="site.31">RoBoMaster is a trademark of DJI</span>
     </div>
 
     <div class="footer-wordmark">
-      <a class="footer-top" href="#top">回到顶部
+      <a class="footer-top" href="#top" data-cms="site.32">回到顶部
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg>
       </a>
       <img src="assets/img/logo-word-2x.png" alt="" aria-hidden="true" width="2240" height="260" loading="lazy" decoding="async" />
@@ -340,6 +340,7 @@
 <script src="assets/js/site.js?v=3" defer></script>
 <script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/vortex.js?v=1" defer></script>
+<script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
 </html>

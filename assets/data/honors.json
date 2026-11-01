@@ -11,6 +11,42 @@
       "avatar": "assets/img/members/img_0937-c4b8c493.webp",
       "order": 0,
       "visible": true
+    },
+    {
+      "id": "tmp1793537501814",
+      "name": "大肥鱼",
+      "nick": "大肥鱼",
+      "season": "2026",
+      "role": "大肥鱼",
+      "direction": "大肥鱼",
+      "note": "大肥鱼",
+      "avatar": "assets/img/members/e2d07432c895d1431cbe7920-4cfe94c6.webp",
+      "order": 1,
+      "visible": true
+    },
+    {
+      "id": "tmp1793537537216",
+      "name": "大肥鱼",
+      "nick": "大肥鱼",
+      "season": "2026",
+      "role": "大肥鱼",
+      "direction": "大肥鱼",
+      "note": "大肥鱼",
+      "avatar": "assets/img/members/e2d07432c895d1431cbe7920-4fabbbb9.webp",
+      "order": 2,
+      "visible": true
+    },
+    {
+      "id": "tmp1793537751937",
+      "name": "大肥鱼",
+      "nick": "大肥鱼",
+      "season": "2026",
+      "role": "大肥鱼",
+      "direction": "大肥鱼",
+      "note": "大肥鱼",
+      "avatar": "assets/img/members/e2d07432c895d1431cbe7920-52374a94.webp",
+      "order": 3,
+      "visible": true
     }
   ],
   "honors": [

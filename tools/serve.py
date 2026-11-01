@@ -39,6 +39,7 @@ DATA_FILE = os.path.join(ROOT, "assets", "data", "gallery.json")
 HONORS_FILE = os.path.join(ROOT, "assets", "data", "honors.json")
 MEMBER_DIR = os.path.join(ROOT, "assets", "img", "members")
 ADMIN_CONF = os.path.join(ROOT, "tools", "admin.json")
+CONTENT_FILE = os.path.join(ROOT, "assets", "data", "content.json")
 
 ALLOWED_EXT = {".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif", ".avif", ".gif", ".bmp", ".tif", ".tiff"}
 MAX_UPLOAD = 120 * 1024 * 1024
@@ -413,6 +414,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 return self._change_password()
             if path == "/api/honors":
                 return self._save_honors()
+            if path == "/api/content":
+                return self._save_content()
         except ValueError as e:
             return self._json({"ok": False, "error": str(e)}, 400)
         except Exception as e:
@@ -690,6 +693,39 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
         save_named("honors", state)
         return self._json({"ok": True, "state": state})
+
+    def _save_content(self):
+        if not self._require_admin():
+            return
+        data = json.loads(self._read_body() or b'{}')
+        raw = data.get('entries')
+        if not isinstance(raw, dict):
+            raise ValueError('格式不正确')
+        entries = {}
+        for k, v in raw.items():
+            k = str(k)
+            if not (0 < len(k) <= 40) or not all(c.isalnum() or c in '._-' for c in k):
+                continue
+            if not isinstance(v, dict):
+                continue
+            o = str(v.get('o') or '')[:3000]
+            t = str(v.get('t') if v.get('t') is not None else '')[:3000]
+            if not o or t == o:
+                continue
+            entries[k] = {'o': o, 't': t}
+        out = {'version': 1, 'entries': entries}
+        with _write_lock:
+            os.makedirs(os.path.dirname(CONTENT_FILE), exist_ok=True)
+            tmp = CONTENT_FILE + '.tmp'
+            with open(tmp, 'w', encoding='utf-8') as f:
+                json.dump(out, f, ensure_ascii=False, indent=2)
+            if os.path.exists(CONTENT_FILE):
+                try:
+                    shutil.copyfile(CONTENT_FILE, CONTENT_FILE + '.bak')
+                except Exception:
+                    pass
+            os.replace(tmp, CONTENT_FILE)
+        return self._json({'ok': True, 'count': len(entries)})
 
     def _delete(self):
         if not self._require_admin():

@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/css/motion.css?v=4" />
 </head>
 <body>
-<a class="skip-link" href="#main">跳到主要内容</a>
+<a class="skip-link" href="#main" data-cms="hall.1">跳到主要内容</a>
 <div class="scroll-bar" aria-hidden="true"></div>
 
 <header class="site-header">
@@ -38,25 +38,25 @@
       <a class="brand" href="index.html" aria-label="POTENTIAL 战队首页">
         <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
         <span class="brand__text">
-          <span class="brand__name">Potential</span>
-          <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+          <span class="brand__name" data-cms="site.1">Potential</span>
+          <span class="brand__sub" data-cms="site.2">南京邮电大学 · 机甲大师</span>
         </span>
       </a>
       <ul class="nav__links">
-        <li><a class="nav__link" href="index.html">首页</a></li>
-        <li><a class="nav__link" href="about.html">战队</a></li>
-        <li><a class="nav__link" href="robots.html">机甲与团队</a></li>
-        <li><a class="nav__link" href="gallery.html">影像</a></li>
-        <li><a class="nav__link" href="results.html">战绩</a></li>
-        <li><a class="nav__link" href="hall.html" aria-current="page">名人堂</a></li>
-        <li><a class="nav__link" href="join.html">加入我们</a></li>
+        <li><a class="nav__link" href="index.html" data-cms="site.3">首页</a></li>
+        <li><a class="nav__link" href="about.html" data-cms="site.4">战队</a></li>
+        <li><a class="nav__link" href="robots.html" data-cms="site.5">机甲与团队</a></li>
+        <li><a class="nav__link" href="gallery.html" data-cms="site.6">影像</a></li>
+        <li><a class="nav__link" href="results.html" data-cms="site.7">战绩</a></li>
+        <li><a class="nav__link" href="hall.html" aria-current="page" data-cms="site.8">名人堂</a></li>
+        <li><a class="nav__link" href="join.html" data-cms="site.9">加入我们</a></li>
       </ul>
       <div class="nav__end">
         <button class="nav__search" type="button" onclick="PotentialSearch.open()" aria-label="快速跳转">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="M16 16l4.4 4.4"/></svg>
           <kbd>⌘K</kbd>
         </button>
-        <a class="nav__cta" href="join.html">2026 招新</a>
+        <a class="nav__cta" href="join.html" data-cms="site.10">2026 招新</a>
         <button class="nav__toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span></button>
       </div>
     </nav>
@@ -64,13 +64,13 @@
 </header>
 
 <div class="nav__drawer" aria-label="移动端导航">
-  <a href="index.html"><span>首页</span><span>01</span></a>
-  <a href="about.html"><span>战队</span><span>02</span></a>
-  <a href="robots.html"><span>机甲与团队</span><span>03</span></a>
-  <a href="gallery.html"><span>影像</span><span>04</span></a>
-  <a href="results.html"><span>战绩</span><span>05</span></a>
-  <a href="hall.html"><span>名人堂</span><span>06</span></a>
-  <a href="join.html"><span>加入我们</span><span>07</span></a>
+  <a href="index.html"><span data-cms="site.11">首页</span><span>01</span></a>
+  <a href="about.html"><span data-cms="site.12">战队</span><span>02</span></a>
+  <a href="robots.html"><span data-cms="site.13">机甲与团队</span><span>03</span></a>
+  <a href="gallery.html"><span data-cms="site.14">影像</span><span>04</span></a>
+  <a href="results.html"><span data-cms="site.15">战绩</span><span>05</span></a>
+  <a href="hall.html"><span data-cms="site.16">名人堂</span><span>06</span></a>
+  <a href="join.html"><span data-cms="site.17">加入我们</span><span>07</span></a>
 </div>
 <div class="page">
 <main id="main">
@@ -79,10 +79,10 @@
     <div class="wrap">
       <div class="page-hero__inner">
         <nav class="crumbs" aria-label="面包屑">
-          <a href="index.html">首页</a><span>/</span><span>名人堂</span>
+          <a href="index.html" data-cms="hall.2">首页</a><span>/</span><span data-cms="hall.3">名人堂</span>
         </nav>
-        <h1 class="h1">名人堂</h1>
-        <p class="lead page-hero__lead">
+        <h1 class="h1" data-cms="hall.4">名人堂</h1>
+        <p class="lead page-hero__lead" data-cms="hall.5">
           这里记录两件事：我们拿过的成绩，以及把成绩做出来的人。
           一块记分牌背后，是无数个在机房里熬过的夜晚。
         </p>
@@ -96,18 +96,18 @@
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <span class="sec-head__index" data-reveal>01 — 荣誉墙</span>
-          <h2 class="h2" data-reveal data-reveal-delay="60">每一块奖牌<br />都有具体的日期</h2>
+          <span class="sec-head__index" data-reveal data-cms="hall.6">01 — 荣誉墙</span>
+          <h2 class="h2" data-reveal data-reveal-delay="60" data-cms="hall.7">每一块奖牌<br />都有具体的日期</h2>
         </div>
         <div class="sec-head__right">
-          <p class="lead" data-reveal data-reveal-delay="120">
+          <p class="lead" data-reveal data-reveal-delay="120" data-cms="hall.8">
             从第一次站上联盟赛赛场，到首次拿到季军。
             我们更愿意记住过程，但也不会忘记结果。
           </p>
         </div>
       </div>
       <div class="trophy-list" id="trophyList"></div>
-      <div class="empty" id="honourEmpty" hidden><p>荣誉记录整理中。</p></div>
+      <div class="empty" id="honourEmpty" hidden><p data-cms="hall.9">荣誉记录整理中。</p></div>
     </div>
   </section>
 
@@ -116,11 +116,11 @@
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <span class="sec-head__index" data-reveal>02 — 成员档案</span>
-          <h2 class="h2" data-reveal data-reveal-delay="60">把他们<br />写进档案</h2>
+          <span class="sec-head__index" data-reveal data-cms="hall.10">02 — 成员档案</span>
+          <h2 class="h2" data-reveal data-reveal-delay="60" data-cms="hall.11">把他们<br />写进档案</h2>
         </div>
         <div class="sec-head__right">
-          <p class="lead" data-reveal data-reveal-delay="120">
+          <p class="lead" data-reveal data-reveal-delay="120" data-cms="hall.12">
             按赛季归档的队员名录。每一位参与过设计、装配、调试、
             拍摄与赛事运营的成员，都在这份名单里。
           </p>
@@ -133,14 +133,14 @@
       <div class="archive-empty" id="memberEmpty">
         <div class="archive-empty__grid" aria-hidden="true"></div>
         <div class="archive-empty__body">
-          <span class="eyebrow">Archive</span>
-          <h3 class="archive-empty__title">档案正在整理中</h3>
+          <span class="eyebrow" data-cms="hall.13">Archive</span>
+          <h3 class="archive-empty__title" data-cms="hall.14">档案正在整理中</h3>
           <p class="js-admin-only">
             队员名录由战队自行维护。管理员可在
-            <a class="tlink" href="admin.html#members">图片管理后台 · 成员档案</a>
+            <a class="tlink" href="admin.html#members" data-cms="hall.15">图片管理后台 · 成员档案</a>
             中录入姓名、赛季、方向与一句话介绍，保存后会立即出现在这里。
           </p>
-          <p class="js-public-only">
+          <p class="js-public-only" data-cms="hall.16">
             这份名录正在整理中。等档案正式公开，你就能在这里看到每一位
             参与过设计、装配、调试与赛事运营的队员。
           </p>
@@ -157,21 +157,21 @@
 </div>
 <div class="split">
         <div>
-          <p class="eyebrow" data-reveal>Legacy</p>
-          <h2 class="h2 mt-m" data-reveal data-reveal-delay="60">离开的人，<br />留下的是方法</h2>
+          <p class="eyebrow" data-reveal data-cms="hall.17">Legacy</p>
+          <h2 class="h2 mt-m" data-reveal data-reveal-delay="60" data-cms="hall.18">离开的人，<br />留下的是方法</h2>
         </div>
         <div data-reveal data-reveal-delay="120">
-          <p class="lead">
+          <p class="lead" data-cms="hall.19">
             一支学生战队的寿命由学制决定。四年之后，写代码的人会毕业，
             但设计规范、调试文档、踩过的坑与修好的结构会留下来。
           </p>
-          <p class="mt-m dim" style="max-width:54ch">
+          <p class="mt-m dim" style="max-width:54ch" data-cms="hall.20">
             所以我们把「带训」写进了战队的日常：老队员必须把
             做过的方案整理成能被下一个人接手的文档。
             名人堂记录的是名字，真正被传承的是这些方法与经验。
           </p>
           <div class="team-strip mt-m">
-            <span><b>设计评审</b></span><span>文档沉淀</span><span><b>老带新</b></span><span>赛季复盘</span>
+            <span><b data-cms="hall.21">设计评审</b></span><span data-cms="hall.22">文档沉淀</span><span><b data-cms="hall.23">老带新</b></span><span data-cms="hall.24">赛季复盘</span>
           </div>
         </div>
       </div>
@@ -184,15 +184,15 @@
         <div class="join-panel__grid" aria-hidden="true"></div>
         <div class="join-panel__inner">
           <div>
-            <p class="eyebrow">Next Name</p>
-            <h2 class="h2" style="margin-top:18px">下一个名字，<br />可能是你</h2>
-            <p class="lead" style="margin-top:18px;max-width:42ch">
+            <p class="eyebrow" data-cms="hall.25">Next Name</p>
+            <h2 class="h2" style="margin-top:18px" data-cms="hall.26">下一个名字，<br />可能是你</h2>
+            <p class="lead" style="margin-top:18px;max-width:42ch" data-cms="hall.27">
               这份名单每年都在变长。如果你也想把自己的名字写进来，从这里开始。
             </p>
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end">
-            <a class="btn btn--primary" href="join.html">加入我们<svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-            <a class="btn btn--ghost" href="results.html">看战绩</a>
+            <a class="btn btn--primary" href="join.html" data-cms="hall.28">加入我们<svg class="arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn--ghost" href="results.html" data-cms="hall.29">看战绩</a>
           </div>
         </div>
       </div>
@@ -209,38 +209,38 @@
         <a class="brand" href="index.html">
           <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
           <span class="brand__text">
-            <span class="brand__name">Potential</span>
-            <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+            <span class="brand__name" data-cms="site.18">Potential</span>
+            <span class="brand__sub" data-cms="site.19">南京邮电大学 · 机甲大师</span>
           </span>
         </a>
-        <p>潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
+        <p data-cms="site.20">潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4 data-cms="site.21">Navigation</h4>
         <ul>
-          <li><a href="about.html">战队简介</a></li>
-          <li><a href="robots.html">机甲与团队</a></li>
-          <li><a href="results.html">战绩与赛季</a></li>
-          <li><a href="join.html">加入我们</a></li>
+          <li><a href="about.html" data-cms="site.22">战队简介</a></li>
+          <li><a href="robots.html" data-cms="site.23">机甲与团队</a></li>
+          <li><a href="results.html" data-cms="site.24">战绩与赛季</a></li>
+          <li><a href="join.html" data-cms="site.25">加入我们</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-cms="site.26">Contact</h4>
         <ul>
-          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener">B 站 · 南邮 Potential 战队</a></li>
-          <li><span>南京邮电大学仙林校区</span></li>
-          <li><span>南京市栖霞区文苑路 9 号</span></li>
-          <li><span>依托 · 工程实验教学部</span></li>
+          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener" data-cms="site.27">B 站 · 南邮 Potential 战队</a></li>
+          <li><span data-cms="site.28">南京邮电大学仙林校区</span></li>
+          <li><span data-cms="site.29">南京市栖霞区文苑路 9 号</span></li>
+          <li><span data-cms="site.30">依托 · 工程实验教学部</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> NJUPT Potential Robotics Team · 本站为校内展示用途</span>
-      <span class="footer-bottom__note">RoBoMaster is a trademark of DJI</span>
+      <span class="footer-bottom__note" data-cms="site.31">RoBoMaster is a trademark of DJI</span>
     </div>
 
     <div class="footer-wordmark">
-      <a class="footer-top" href="#top">回到顶部
+      <a class="footer-top" href="#top" data-cms="site.32">回到顶部
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg>
       </a>
       <img src="assets/img/logo-word-2x.png" alt="" aria-hidden="true" width="2240" height="260" loading="lazy" decoding="async" />
@@ -253,6 +253,7 @@
 <script src="assets/js/site.js?v=3" defer></script>
 <script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/vortex.js?v=1" defer></script>
+<script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
 </html>

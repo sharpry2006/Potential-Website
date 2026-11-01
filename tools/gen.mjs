@@ -140,6 +140,7 @@ const footer = `
 <script src="assets/js/site.js?v=3" defer></script>
 <script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/vortex.js?v=1" defer></script>
+<script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
 </html>
@@ -1222,3 +1223,4 @@ for (const [file, active, title, desc, body0] of pages) {
   writeFileSync(pjoin(root, file), page(active, title, desc, body), 'utf8');
   console.log('wrote', file);
 }
+await import('./cms-tag.mjs');

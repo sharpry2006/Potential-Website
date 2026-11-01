@@ -9,6 +9,7 @@
 <link rel="preload" href="assets/fonts/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/style.css?v=4" />
 <link rel="stylesheet" href="assets/css/admin.css?v=3" />
+<link rel="stylesheet" href="assets/css/admin-content.css?v=1" />
 </head>
 <body class="admin-body">
 
@@ -184,6 +185,23 @@
       </div>
     </section>
 
+    <!-- 网站文字 -->
+    <section class="panel" id="cms">
+      <div class="panel__head">
+        <h2>网站文字 <em id="cmsCount">0</em></h2>
+        <div class="panel__hint">选择页面，直接改写标题、段落、按钮与页脚文字。换行会保留；保存后刷新网站即生效。</div>
+      </div>
+      <div class="cms-bar">
+        <select id="cmsPage" aria-label="选择页面"></select>
+        <input type="search" id="cmsSearch" placeholder="搜索文字…" />
+        <label class="cms-only"><input type="checkbox" id="cmsChanged" /> 只看已修改</label>
+        <a class="tlink" id="cmsOpen" href="index.html" target="_blank" rel="noopener">打开页面</a>
+        <span class="cms-status" id="cmsStatus"></span>
+        <button class="btn btn--primary btn--sm" type="button" id="cmsSave">保存文字</button>
+      </div>
+      <div class="cms-list" id="cmsList"></div>
+    </section>
+
     <!-- 相册 -->
     <section class="panel">
       <div class="panel__head">
@@ -210,6 +228,8 @@
   <div class="toast" id="toast" hidden></div>
 </div>
 
+<script src="assets/js/content.js?v=1" defer></script>
+<script src="assets/js/admin-content.js?v=1" defer></script>
 <script src="assets/js/admin.js?v=3" defer></script>
 </body>
 </html>

@@ -29,7 +29,7 @@
 <link rel="stylesheet" href="assets/css/motion.css?v=4" />
 </head>
 <body>
-<a class="skip-link" href="#main">跳到主要内容</a>
+<a class="skip-link" href="#main" data-cms="gallery.1">跳到主要内容</a>
 <div class="scroll-bar" aria-hidden="true"></div>
 
 <header class="site-header">
@@ -38,25 +38,25 @@
       <a class="brand" href="index.html" aria-label="POTENTIAL 战队首页">
         <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
         <span class="brand__text">
-          <span class="brand__name">Potential</span>
-          <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+          <span class="brand__name" data-cms="site.1">Potential</span>
+          <span class="brand__sub" data-cms="site.2">南京邮电大学 · 机甲大师</span>
         </span>
       </a>
       <ul class="nav__links">
-        <li><a class="nav__link" href="index.html">首页</a></li>
-        <li><a class="nav__link" href="about.html">战队</a></li>
-        <li><a class="nav__link" href="robots.html">机甲与团队</a></li>
-        <li><a class="nav__link" href="gallery.html" aria-current="page">影像</a></li>
-        <li><a class="nav__link" href="results.html">战绩</a></li>
-        <li><a class="nav__link" href="hall.html">名人堂</a></li>
-        <li><a class="nav__link" href="join.html">加入我们</a></li>
+        <li><a class="nav__link" href="index.html" data-cms="site.3">首页</a></li>
+        <li><a class="nav__link" href="about.html" data-cms="site.4">战队</a></li>
+        <li><a class="nav__link" href="robots.html" data-cms="site.5">机甲与团队</a></li>
+        <li><a class="nav__link" href="gallery.html" aria-current="page" data-cms="site.6">影像</a></li>
+        <li><a class="nav__link" href="results.html" data-cms="site.7">战绩</a></li>
+        <li><a class="nav__link" href="hall.html" data-cms="site.8">名人堂</a></li>
+        <li><a class="nav__link" href="join.html" data-cms="site.9">加入我们</a></li>
       </ul>
       <div class="nav__end">
         <button class="nav__search" type="button" onclick="PotentialSearch.open()" aria-label="快速跳转">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="M16 16l4.4 4.4"/></svg>
           <kbd>⌘K</kbd>
         </button>
-        <a class="nav__cta" href="join.html">2026 招新</a>
+        <a class="nav__cta" href="join.html" data-cms="site.10">2026 招新</a>
         <button class="nav__toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span></button>
       </div>
     </nav>
@@ -64,13 +64,13 @@
 </header>
 
 <div class="nav__drawer" aria-label="移动端导航">
-  <a href="index.html"><span>首页</span><span>01</span></a>
-  <a href="about.html"><span>战队</span><span>02</span></a>
-  <a href="robots.html"><span>机甲与团队</span><span>03</span></a>
-  <a href="gallery.html"><span>影像</span><span>04</span></a>
-  <a href="results.html"><span>战绩</span><span>05</span></a>
-  <a href="hall.html"><span>名人堂</span><span>06</span></a>
-  <a href="join.html"><span>加入我们</span><span>07</span></a>
+  <a href="index.html"><span data-cms="site.11">首页</span><span>01</span></a>
+  <a href="about.html"><span data-cms="site.12">战队</span><span>02</span></a>
+  <a href="robots.html"><span data-cms="site.13">机甲与团队</span><span>03</span></a>
+  <a href="gallery.html"><span data-cms="site.14">影像</span><span>04</span></a>
+  <a href="results.html"><span data-cms="site.15">战绩</span><span>05</span></a>
+  <a href="hall.html"><span data-cms="site.16">名人堂</span><span>06</span></a>
+  <a href="join.html"><span data-cms="site.17">加入我们</span><span>07</span></a>
 </div>
 <div class="page">
 <main id="main">
@@ -79,10 +79,10 @@
     <div class="wrap">
       <div class="page-hero__inner">
         <nav class="crumbs" aria-label="面包屑">
-          <a href="index.html">首页</a><span>/</span><span>影像</span>
+          <a href="index.html" data-cms="gallery.2">首页</a><span>/</span><span data-cms="gallery.3">影像</span>
         </nav>
-        <h1 class="h1">影像</h1>
-        <p class="lead page-hero__lead">
+        <h1 class="h1" data-cms="gallery.4">影像</h1>
+        <p class="lead page-hero__lead" data-cms="gallery.5">
           赛场、机房与深夜的工位。这里记录战队真实的样子——
           照片由队员随时补充，随时更新。
         </p>
@@ -97,14 +97,14 @@
 
       <div class="gallery-bar" id="galleryBar" hidden>
         <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="按相册筛选"></div>
-        <div class="gallery-bar__count"><b id="galleryCount">0</b> 张照片<span class="gallery-bar__hint"> · 点击放大 · ← → 翻页</span></div>
+        <div class="gallery-bar__count"><b id="galleryCount">0</b> 张照片<span class="gallery-bar__hint" data-cms="gallery.6"> · 点击放大 · ← → 翻页</span></div>
       </div>
 
       <div class="gallery-grid" id="galleryGrid"></div>
 
       <div class="empty" id="galleryEmpty" hidden style="margin-top:24px">
-        <p class="js-admin-only">画廊还没有照片。管理员可在 <a class="tlink" href="admin.html">图片管理后台</a> 上传。</p>
-        <p class="js-public-only">照片正在整理中，敬请期待。</p>
+        <p class="js-admin-only">画廊还没有照片。管理员可在 <a class="tlink" href="admin.html" data-cms="gallery.7">图片管理后台</a> 上传。</p>
+        <p class="js-public-only" data-cms="gallery.8">照片正在整理中，敬请期待。</p>
       </div>
     </div>
   </section>
@@ -118,38 +118,38 @@
         <a class="brand" href="index.html">
           <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
           <span class="brand__text">
-            <span class="brand__name">Potential</span>
-            <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+            <span class="brand__name" data-cms="site.18">Potential</span>
+            <span class="brand__sub" data-cms="site.19">南京邮电大学 · 机甲大师</span>
           </span>
         </a>
-        <p>潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
+        <p data-cms="site.20">潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
       </div>
       <div class="footer-col">
-        <h4>Navigation</h4>
+        <h4 data-cms="site.21">Navigation</h4>
         <ul>
-          <li><a href="about.html">战队简介</a></li>
-          <li><a href="robots.html">机甲与团队</a></li>
-          <li><a href="results.html">战绩与赛季</a></li>
-          <li><a href="join.html">加入我们</a></li>
+          <li><a href="about.html" data-cms="site.22">战队简介</a></li>
+          <li><a href="robots.html" data-cms="site.23">机甲与团队</a></li>
+          <li><a href="results.html" data-cms="site.24">战绩与赛季</a></li>
+          <li><a href="join.html" data-cms="site.25">加入我们</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Contact</h4>
+        <h4 data-cms="site.26">Contact</h4>
         <ul>
-          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener">B 站 · 南邮 Potential 战队</a></li>
-          <li><span>南京邮电大学仙林校区</span></li>
-          <li><span>南京市栖霞区文苑路 9 号</span></li>
-          <li><span>依托 · 工程实验教学部</span></li>
+          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener" data-cms="site.27">B 站 · 南邮 Potential 战队</a></li>
+          <li><span data-cms="site.28">南京邮电大学仙林校区</span></li>
+          <li><span data-cms="site.29">南京市栖霞区文苑路 9 号</span></li>
+          <li><span data-cms="site.30">依托 · 工程实验教学部</span></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span data-year>2026</span> NJUPT Potential Robotics Team · 本站为校内展示用途</span>
-      <span class="footer-bottom__note">RoBoMaster is a trademark of DJI</span>
+      <span class="footer-bottom__note" data-cms="site.31">RoBoMaster is a trademark of DJI</span>
     </div>
 
     <div class="footer-wordmark">
-      <a class="footer-top" href="#top">回到顶部
+      <a class="footer-top" href="#top" data-cms="site.32">回到顶部
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg>
       </a>
       <img src="assets/img/logo-word-2x.png" alt="" aria-hidden="true" width="2240" height="260" loading="lazy" decoding="async" />
@@ -162,6 +162,7 @@
 <script src="assets/js/site.js?v=3" defer></script>
 <script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/vortex.js?v=1" defer></script>
+<script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
 </html>
