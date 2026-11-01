@@ -1,5 +1,18 @@
 {
-  "members": [],
+  "members": [
+    {
+      "id": "tmp1793535279420",
+      "name": "苑尚坤",
+      "nick": "kun2419",
+      "season": "2026",
+      "role": "算法组组长",
+      "direction": "算法",
+      "note": "算法组组长",
+      "avatar": "assets/img/members/img_0937-c4b8c493.webp",
+      "order": 0,
+      "visible": true
+    }
+  ],
   "honors": [
     {
       "id": "h2026js",

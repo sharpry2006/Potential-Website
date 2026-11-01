@@ -304,6 +304,23 @@ def parse_multipart(body, boundary):
     return out
 
 
+TEAM_DIR = os.path.join(ROOT, "assets", "img", "team")
+
+
+def safe_image_path(rel):
+    """保存画廊数据时允许的图片位置：相册目录 + 团队照片目录（只读引用，不会被删除）"""
+    if not rel:
+        return None
+    rel = str(rel).replace("\\", "/").lstrip("/")
+    if ".." in rel:
+        return None
+    full = os.path.normpath(os.path.join(ROOT, rel))
+    for base in (GALLERY_DIR, TEAM_DIR):
+        if full.startswith(base + os.sep):
+            return full
+    return None
+
+
 def safe_gallery_path(rel):
     if not rel:
         return None
@@ -594,8 +611,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             for i, img in enumerate(images):
                 if not isinstance(img, dict):
                     continue
-                main = safe_gallery_path(img.get("file"))
-                thumb = safe_gallery_path(img.get("thumb"))
+                main = safe_image_path(img.get("file"))
+                thumb = safe_image_path(img.get("thumb"))
                 if not main or not os.path.exists(main):
                     continue
                 cleaned.append({
