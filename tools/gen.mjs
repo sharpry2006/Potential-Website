@@ -44,9 +44,9 @@ const head = (title, desc, file) => `<!DOCTYPE html>
 <link rel="canonical" href="${SITE}${file}" />
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0d'/%3E%3Cpath d='M9 24V8h7a5 5 0 0 1 0 10h-7' fill='none' stroke='%23ff3d2e' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E" />
-<link rel="preload" href="assets/fonts/ptsans-cn-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="assets/css/style.css?v=3" />
+<link rel="stylesheet" href="assets/css/style.css?v=4" />
 <link rel="stylesheet" href="assets/css/motion.css?v=1" />
 </head>
 <body>

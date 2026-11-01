@@ -4,24 +4,10 @@
    ========================================================================== */
 
 /* ---------- Fonts (self-hosted, subset) ---------- */
-@font-face {
-  font-family: 'PTSans';
-  src: url('../fonts/ptsans-cn-regular.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PTSans';
-  src: url('../fonts/ptsans-cn-bold.woff2') format('woff2');
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'PTSerif';
-  src: url('../fonts/ptserif-cn-semibold.woff2') format('woff2');
-  font-weight: 600;
-  font-display: swap;
-}
+@font-face { font-family: 'NotoSC'; src: url('../fonts/noto-sans-sc-400.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'NotoSC'; src: url('../fonts/noto-sans-sc-700.woff2') format('woff2'); font-weight: 500 800; font-display: swap; }
+@font-face { font-family: 'NotoSC'; src: url('../fonts/noto-sans-sc-900.woff2') format('woff2'); font-weight: 900; font-display: swap; }
+@font-face { font-family: 'NotoSerifSC'; src: url('../fonts/noto-serif-sc-700.woff2') format('woff2'); font-weight: 600 800; font-display: swap; }
 @font-face {
   font-family: 'PTGrotesk';
   src: url('../fonts/grotesk-latin.woff2') format('woff2');
@@ -71,10 +57,10 @@
   --panel-2: rgba(255, 255, 255, 0.05);
 
   /* type */
-  --font-cn: 'PTSans', 'PingFang SC', 'HarmonyOS Sans SC', 'Microsoft YaHei',
+  --font-cn: 'NotoSC', 'PingFang SC', 'HarmonyOS Sans SC', 'Microsoft YaHei',
     'Source Han Sans SC', 'Noto Sans CJK SC', system-ui, sans-serif;
-  --font-serif: 'PTSerif', 'Songti SC', 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
-  --font-en: 'PTGrotesk', 'PTSans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'NotoSerifSC', 'Songti SC', 'Source Han Serif SC', 'Noto Serif CJK SC', serif;
+  --font-en: 'PTGrotesk', 'NotoSC', ui-sans-serif, system-ui, sans-serif;
   --font-num: 'PTNum', 'PTGrotesk', ui-sans-serif, system-ui, sans-serif;
 
   --fs-display: clamp(3.4rem, 11.2vw, 10.5rem);
@@ -271,17 +257,17 @@ body::after {
   text-wrap: balance;
 }
 .h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: var(--fs-h1);
-  font-weight: 600;
+  font-weight: 900;
   line-height: 1.2;
   letter-spacing: 0.01em;
   color: var(--txt-100);
 }
 .h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: var(--fs-h2);
-  font-weight: 600;
+  font-weight: 800;
   line-height: 1.34;
   letter-spacing: 0.015em;
   color: var(--txt-100);
@@ -1326,7 +1312,7 @@ body.nav-open .nav__drawer {
   border-left: 1px solid var(--line-accent);
 }
 .quote p {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: clamp(1.15rem, 1.7vw, 1.5rem);
   line-height: 1.7;
   color: var(--txt-100);
@@ -1470,7 +1456,7 @@ body.nav-open .nav__drawer {
   color: var(--accent-soft);
 }
 .card__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.16rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -2763,7 +2749,7 @@ body.nav-open .nav__drawer {
   text-transform: uppercase;
 }
 .shot--more b {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.1rem;
   color: var(--txt-100);
   font-weight: 600;
@@ -2912,7 +2898,7 @@ body.nav-open .nav__drawer {
   margin-bottom: 6px;
 }
 .album-card__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.18rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -3421,7 +3407,7 @@ body.nav-open .nav__drawer {
   font-weight: 400;
 }
 .trophy__main h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: clamp(1.14rem, 1.9vw, 1.5rem);
   font-weight: 600;
   color: var(--txt-100);
@@ -3453,7 +3439,7 @@ body.nav-open .nav__drawer {
   padding: 7px 14px;
   border: 1px solid var(--line-accent);
   background: rgba(255, 61, 46, 0.08);
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.02rem;
   font-weight: 600;
   color: var(--accent-soft);
@@ -3547,7 +3533,7 @@ body.nav-open .nav__drawer {
   background: linear-gradient(140deg, rgba(255, 61, 46, 0.28), rgba(255, 255, 255, 0.04));
   display: grid;
   place-items: center;
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.24rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -3566,7 +3552,7 @@ body.nav-open .nav__drawer {
   min-width: 0;
 }
 .member__name {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -3627,7 +3613,7 @@ body.nav-open .nav__drawer {
 }
 .archive-empty__title {
   margin: 14px 0 12px;
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-weight: 600;
   color: var(--txt-100);
@@ -3898,7 +3884,7 @@ body.nav-open .nav__drawer {
 }
 .league h3 {
   margin: 12px 0 4px;
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.14rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -3974,7 +3960,7 @@ body.nav-open .nav__drawer {
   padding-top: 5px;
 }
 .growth__body h3 {
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: 1.08rem;
   font-weight: 600;
   color: var(--txt-100);
@@ -4024,7 +4010,7 @@ body.nav-open .nav__drawer {
 }
 .hall-link__title {
   margin: 12px 0 8px;
-  font-family: var(--font-serif);
+  font-family: var(--font-cn);
   font-size: clamp(1.3rem, 2.2vw, 1.7rem);
   font-weight: 600;
   color: var(--txt-100);
