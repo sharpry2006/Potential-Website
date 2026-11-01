@@ -4050,3 +4050,65 @@ body.nav-open .nav__drawer {
   color: var(--accent-soft);
   border-color: var(--accent);
 }
+
+/* ==========================================================================
+   Polish pass 4 — 顶栏可读性 / 移动端首屏遮罩 / 影像页相册条
+   ========================================================================== */
+
+/* 顶栏：未吸顶时叠一层渐隐暗幕，保证压在亮色照片上的导航、搜索与按钮清晰可读 */
+.site-header::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -34px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(5, 6, 8, 0.72), rgba(5, 6, 8, 0));
+  transition: opacity 0.5s var(--ease-out);
+}
+.site-header.is-stuck::before {
+  opacity: 0;
+}
+.nav__search,
+.nav__cta {
+  background: rgba(8, 9, 12, 0.46);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.nav__search:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.nav__cta:hover {
+  background: var(--accent);
+}
+
+/* 手机端首屏：加深遮罩，正文压在照片上也保持可读 */
+@media (max-width: 900px) {
+  .hero__scrim {
+    background:
+      linear-gradient(to bottom, rgba(5, 6, 8, 0.88) 0%, rgba(5, 6, 8, 0.78) 34%, rgba(5, 6, 8, 0.84) 66%, rgba(5, 6, 8, 0.97) 100%),
+      linear-gradient(100deg, rgba(5, 6, 8, 0.5), transparent 72%);
+  }
+}
+
+/* 内页页头：收紧顶部留白 */
+.page-hero {
+  padding-top: clamp(104px, 12vw, 150px);
+}
+
+/* 影像页相册条：按数量自适应列数；相册较少时用宽幅卡片，避免右侧大片空白 */
+.album-strip {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+}
+@media (max-width: 900px) {
+  .album-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 901px) {
+  .album-strip:has(> .album-card:nth-child(2):last-child) .album-card {
+    aspect-ratio: 21 / 9;
+  }
+  .album-strip:has(> .album-card:nth-child(3):last-child) .album-card {
+    aspect-ratio: 16 / 9;
+  }
+}
