@@ -47,7 +47,7 @@ const head = (title, desc, file) => `<!DOCTYPE html>
 <link rel="preload" href="assets/fonts/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/style.css?v=4" />
-<link rel="stylesheet" href="assets/css/motion.css?v=4" />
+<link rel="stylesheet" href="assets/css/motion.css?v=8" />
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -140,6 +140,9 @@ const footer = `
 <script src="assets/js/site.js?v=3" defer></script>
 <script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/vortex.js?v=1" defer></script>
+<script src="assets/js/gargantua.js?v=1" defer></script>
+<script src="assets/js/endurance.js?v=2" defer></script>
+<script src="assets/js/flowfx.js?v=7" defer></script>
 <script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>

@@ -26,7 +26,7 @@ const EXCLUDE_FILES = new Set([
 const EXCLUDE_SUFFIX = ['.bak', '.tmp'];
 
 /* 后台专用资源（纯静态站点用不到，去掉可省 45KB） */
-const EXCLUDE_ASSETS = new Set(['admin.js', 'admin.css']);
+const EXCLUDE_ASSETS = new Set(['admin.js', 'admin.css', 'admin-content.js']);
 const EXCLUDE_DIRS = new Set(['.trash']);
 
 function shouldSkip(name, isDir) {
