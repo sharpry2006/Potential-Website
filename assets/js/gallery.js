@@ -185,8 +185,10 @@
 
     var slides = [], current = 0, timer = null;
 
+    // HTML 默认已带 hero--media（避免挂载时整体重排引起 CLS）；没有照片或数据失败时回退到蓝图版式
+    var fallback = function () { hero.classList.remove('hero--media'); };
     loadData().then(function (data) {
-      if (!data) return;
+      if (!data) return fallback();
       var list = visibleItems(data.images);
       // 首页轮播：优先按后台设置的「轮播顺序」，未设置的按最新排序
       var byNewest = function (a, b) { return (b.order || 0) - (a.order || 0); };
@@ -199,7 +201,7 @@
       var heroes = list.filter(function (i) { return i.hero; }).sort(byRank);
       var featured = list.filter(function (i) { return i.featured; }).sort(byNewest);
       slides = (heroes.length ? heroes : featured.length ? featured : list.slice().sort(byNewest)).slice(0, 5);
-      if (!slides.length) return;
+      if (!slides.length) return fallback();
       mount();
     });
 

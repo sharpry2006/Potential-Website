@@ -49,7 +49,7 @@
   --txt-200: #dfe3e9;
   --txt-300: #b3bcc8;
   --txt-400: #8b95a3;
-  --txt-500: #616b78;
+  --txt-500: #7a8493; /* AA: 5.3:1 on ink-800, 4.6:1 on ink-500 (was #616b78, 3.7:1) */
 
   --accent: #ff3d2e;
   --accent-soft: #ff6b4a;
@@ -176,6 +176,11 @@ body.has-admin .js-public-only {
 /* hidden 属性必须能压过作者样式的 display（否则 .login-screen{display:grid} 会让它一直显示） */
 [hidden] {
   display: none !important;
+}
+/* 首页轮播信息条：未挂载时保留占位（仅隐藏不移除），避免 JS 挂载后把下方内容推开造成 CLS */
+.hero__photo[hidden] {
+  display: flex !important;
+  visibility: hidden;
 }
 
 /* ---------- Ambient background layers ---------- */
@@ -1056,6 +1061,10 @@ body.nav-open .nav__drawer {
 .hero__thumbs {
   display: flex;
   gap: 6px;
+  min-height: 32px;
+}
+.hero__photo-caption {
+  min-height: 3.1rem;
 }
 .hero__thumb {
   width: 48px;
@@ -2960,6 +2969,10 @@ body.nav-open .nav__drawer {
 .gallery-grid {
   columns: 3;
   column-gap: clamp(8px, 1.1vw, 14px);
+}
+/* 相册条 / 筛选条 / 瀑布流都由 JS 异步渲染，预留高度避免页脚被推动 */
+#galleryApp {
+  min-height: 100svh;
 }
 .gshot {
   break-inside: avoid;
