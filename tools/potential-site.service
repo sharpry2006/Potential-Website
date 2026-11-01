@@ -1,0 +1,24 @@
+# 可选：开机自启（systemd）
+# 安装：
+#   sudo cp tools/potential-site.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now potential-site
+# 查看地址与日志：
+#   systemctl status potential-site
+#   journalctl -u potential-site -f
+[Unit]
+Description=NJUPT Potential 战队官网（局域网静态站点）
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/workspace/potential-site
+ExecStart=/usr/bin/python3 -u /root/workspace/potential-site/tools/serve.py -p 80 -p 8080
+Restart=on-failure
+RestartSec=3
+# 以当前用户运行即可；如需限制权限可换成专用用户
+User=root
+
+[Install]
+WantedBy=multi-user.target

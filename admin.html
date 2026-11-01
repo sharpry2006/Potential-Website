@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>图片管理 · POTENTIAL 战队官网</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0d'/%3E%3Cpath d='M9 24V8h7a5 5 0 0 1 0 10h-7' fill='none' stroke='%23ff3d2e' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E" />
+<link rel="preload" href="assets/fonts/ptsans-cn-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/style.css?v=3" />
+<link rel="stylesheet" href="assets/css/admin.css?v=3" />
+</head>
+<body class="admin-body">
+
+<!-- ===== 登录 ===== -->
+<div class="login-screen" id="loginScreen" hidden>
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <img class="login-card__mark" src="assets/img/logo-mark.png" alt="" />
+    <h1>图片管理后台</h1>
+    <p>上传照片、整理相册、挑选首页大图。所有改动自动保存。</p>
+    <label class="field">
+      <span>管理密码</span>
+      <input type="password" id="password" name="password" required autofocus autocomplete="current-password" placeholder="默认 potential2026" />
+    </label>
+    <button class="btn btn--primary" type="submit" style="width:100%;justify-content:center">登录</button>
+    <p class="login-card__err" id="loginErr" hidden></p>
+    <a class="login-card__back" href="index.html">← 返回网站</a>
+  </form>
+</div>
+
+<!-- ===== 主界面 ===== -->
+<div class="admin" id="adminApp" hidden>
+  <header class="admin-head">
+    <div class="admin-head__brand">
+      <img src="assets/img/logo-mark.png" alt="" />
+      <div>
+        <strong>图片管理</strong>
+        <span>POTENTIAL · 战队官网</span>
+      </div>
+    </div>
+    <div class="admin-head__actions">
+      <span class="save-state" id="saveState">已保存</span>
+      <a class="btn btn--ghost btn--sm" href="gallery.html" target="_blank" rel="noopener">预览画廊</a>
+      <a class="btn btn--ghost btn--sm" href="index.html" target="_blank" rel="noopener">打开网站</a>
+      <button class="btn btn--ghost btn--sm" type="button" id="logoutBtn">退出</button>
+    </div>
+  </header>
+
+  <div class="admin-wrap">
+    <!-- 上传 -->
+    <section class="panel">
+      <div class="panel__head panel__head--row">
+        <div>
+          <h2>上传照片</h2>
+          <div class="panel__hint">拖拽或点选，可一次多张。自动压缩、生成缩略图与模糊占位，手机 HEIC 也支持。</div>
+        </div>
+        <div class="storage" id="storage"></div>
+      </div>
+      <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="选择或拖入图片上传">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0L7.5 8.5M12 4l4.5 4.5" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16v3.2A1.8 1.8 0 0 0 5.8 21h12.4A1.8 1.8 0 0 0 20 19.2V16" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg>
+        <p><b>把照片拖进来</b>，或点击选择文件</p>
+        <small>整批照片会一起进入下方所选相册</small>
+        <input type="file" id="fileInput" accept="image/*" multiple hidden />
+      </div>
+      <div class="upload-toolbar">
+        <label class="field field--inline">
+          <span>上传到相册</span>
+          <select id="uploadAlbum"></select>
+        </label>
+        <div class="upload-progress" id="uploadProgress" hidden>
+          <div class="upload-progress__bar"><i id="uploadBar"></i></div>
+          <span id="uploadText">准备中…</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 首屏轮播 -->
+    <section class="panel">
+      <div class="panel__head panel__head--row">
+        <div>
+          <h2>首屏轮播 <em id="heroCount">0</em></h2>
+          <div class="panel__hint">
+            这里就是网站打开时第一屏轮播的<b>播放顺序</b>——拖动卡片调整，点 × 移出；最多 5 张。
+          </div>
+        </div>
+        <div class="panel__head-actions">
+          <button class="btn btn--ghost btn--sm" type="button" id="heroAdd">添加图片</button>
+        </div>
+      </div>
+
+      <div class="hero-slots" id="heroSlots"></div>
+
+      <div class="hero-picker" id="heroPicker" hidden>
+        <div class="hero-picker__head">
+          <span>点击加入轮播</span>
+          <button class="icon-btn" type="button" id="heroPickerClose" aria-label="关闭">✕</button>
+        </div>
+        <div class="hero-picker__grid" id="heroPickerGrid"></div>
+      </div>
+    </section>
+
+    <!-- 列表 -->
+    <section class="panel">
+      <div class="panel__head panel__head--row">
+        <div>
+          <h2>图片库 <em id="imgCount">0</em></h2>
+          <div class="panel__hint">
+            <b>★ 精选</b> 进首页照片墙，<b>◉ 首页大图</b> 进首屏轮播；拖动卡片可排序，所有改动自动保存。
+          </div>
+        </div>
+        <button class="btn btn--ghost btn--sm" type="button" id="scanBtn" title="找回磁盘上存在、但未入库的图片">扫描未入库</button>
+      </div>
+      <div class="toolbar">
+        <div class="seg" id="albumFilter" role="tablist"></div>
+        <div class="toolbar__right">
+          <div class="seg" id="flagFilter">
+            <button type="button" data-flag="all" class="is-active">全部</button>
+            <button type="button" data-flag="featured">精选</button>
+            <button type="button" data-flag="hidden">已隐藏</button>
+          </div>
+          <select id="sortBy" class="select-sm" title="排序方式">
+            <option value="custom">自定义顺序</option>
+            <option value="new">最新优先</option>
+            <option value="old">最早优先</option>
+            <option value="name">按图注</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- 批量操作条 -->
+      <div class="bulkbar" id="bulkbar">
+        <label class="check">
+          <input type="checkbox" id="selectAll" />
+          <span>全选</span>
+        </label>
+        <span class="bulkbar__count"><b id="selCount">0</b> 张已选</span>
+        <div class="bulkbar__actions">
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="feature">设为精选</button>
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="unfeature">取消精选</button>
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="hero">设为首页大图</button>
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="hide">隐藏</button>
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="show">显示</button>
+          <select id="bulkAlbum" class="select-sm"><option value="">移动到相册…</option></select>
+          <button class="btn btn--ghost btn--sm" type="button" data-bulk="delete">移除</button>
+          <button class="btn btn--ghost btn--sm btn--danger" type="button" data-bulk="purge">永久删除</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="emptyState" hidden>
+        <p>还没有图片。先在上方上传几张试试。</p>
+      </div>
+    </section>
+
+    <!-- 名人堂 -->
+    <section class="panel" id="hall">
+      <div class="panel__head panel__head--row">
+        <div>
+          <h2>名人堂 <em id="hallCount">0</em></h2>
+          <div class="panel__hint">
+            成员档案与荣誉墙。这里录入的内容会显示在网站的
+            <a class="tlink" href="hall.html" target="_blank" rel="noopener">名人堂页面</a>，保存后立即生效。
+          </div>
+        </div>
+        <div class="panel__head-actions">
+          <div class="seg" id="hallTabs">
+            <button type="button" data-tab="members" class="is-active">成员</button>
+            <button type="button" data-tab="honors">荣誉</button>
+          </div>
+          <button class="btn btn--ghost btn--sm" type="button" id="hallAdd">新增</button>
+        </div>
+      </div>
+
+      <!-- 成员 -->
+      <div class="hall-pane" id="paneMembers">
+        <div class="rows" id="memberRows"></div>
+        <div class="rows-empty" id="memberRowsEmpty">还没有成员档案。点右上角「新增」开始录入。</div>
+      </div>
+
+      <!-- 荣誉 -->
+      <div class="hall-pane" id="paneHonors" hidden>
+        <div class="rows" id="honorRows"></div>
+        <div class="rows-empty" id="honorRowsEmpty">还没有荣誉记录。点右上角「新增」开始录入。</div>
+      </div>
+    </section>
+
+    <!-- 相册 -->
+    <section class="panel">
+      <div class="panel__head">
+        <h2>相册</h2>
+        <div class="panel__hint">相册即画廊页上的分类；封面可在下拉里挑一张。</div>
+      </div>
+      <div class="albums" id="albums"></div>
+      <div class="settings">
+        <label class="field field--inline">
+          <span>修改管理密码</span>
+          <input type="password" id="newPassword" placeholder="至少 6 位，留空则不修改" autocomplete="new-password" />
+        </label>
+        <button class="btn btn--ghost btn--sm" type="button" id="savePassword">更新密码</button>
+      </div>
+    </section>
+  </div>
+
+  <!-- 撤销条 -->
+  <div class="undo" id="undoBar" hidden>
+    <span id="undoText"></span>
+    <button type="button" id="undoBtn">撤销</button>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+</div>
+
+<script src="assets/js/admin.js?v=3" defer></script>
+</body>
+</html>

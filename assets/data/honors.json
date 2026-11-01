@@ -1,0 +1,41 @@
+{
+  "members": [],
+  "honors": [
+    {
+      "id": "h2026js",
+      "year": "2026",
+      "event": "RoboMaster 机甲大师高校联盟赛 · 江苏站",
+      "title": "江苏站季军",
+      "result": "季军",
+      "level": "regional",
+      "note": "在无锡江阴举行的江苏站汇聚全国 30 支高校战队。战队从小组赛一路打到淘汰赛，最终夺得季军，创下南京邮电大学在该项赛事的历史最佳战绩。",
+      "date": "2026-03-29",
+      "order": 0,
+      "visible": true
+    },
+    {
+      "id": "h2026tech",
+      "year": "2026",
+      "event": "赛季技术里程碑",
+      "title": "全流程自研落地",
+      "result": "里程碑",
+      "level": "team",
+      "note": "轮腿底盘、飞镖系统与自研电调在赛季中完成从方案到整机验证的闭环，结构打样与加工工艺沉淀为可复用的工程规范。",
+      "date": "2026-10-15",
+      "order": 1,
+      "visible": true
+    },
+    {
+      "id": "h2025sh",
+      "year": "2025",
+      "event": "RoboMaster 机甲大师高校联盟赛 · 上海站",
+      "title": "首次登上联盟赛赛场",
+      "result": "参赛",
+      "level": "regional",
+      "note": "战队第一次以完整阵容参加 RoboMaster 高校联盟赛，与多支成熟战队交手，完成从实验室到赛场的跨越。",
+      "date": "2025-03-29",
+      "order": 2,
+      "visible": true
+    }
+  ]
+}

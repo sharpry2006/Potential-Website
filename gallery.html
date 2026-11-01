@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>影像 · POTENTIAL 南京邮电大学机甲大师战队</title>
+<meta name="description" content="战队影像库：赛场、机甲、实验室与团队的比赛与日常记录。" />
+<meta name="theme-color" content="#08090c" />
+<meta property="og:title" content="影像 · POTENTIAL 南京邮电大学机甲大师战队" />
+<meta property="og:description" content="战队影像库：赛场、机甲、实验室与团队的比赛与日常记录。" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0d'/%3E%3Cpath d='M9 24V8h7a5 5 0 0 1 0 10h-7' fill='none' stroke='%23ff3d2e' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E" />
+<link rel="preload" href="assets/fonts/ptsans-cn-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="assets/fonts/grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="assets/css/style.css?v=3" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+<div class="scroll-bar" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="index.html" aria-label="POTENTIAL 战队首页">
+        <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
+        <span class="brand__text">
+          <span class="brand__name">Potential</span>
+          <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+        </span>
+      </a>
+      <ul class="nav__links">
+        <li><a class="nav__link" href="index.html">首页</a></li>
+        <li><a class="nav__link" href="about.html">战队</a></li>
+        <li><a class="nav__link" href="robots.html">机甲与团队</a></li>
+        <li><a class="nav__link" href="gallery.html" aria-current="page">影像</a></li>
+        <li><a class="nav__link" href="results.html">战绩</a></li>
+        <li><a class="nav__link" href="hall.html">名人堂</a></li>
+        <li><a class="nav__link" href="join.html">加入我们</a></li>
+      </ul>
+      <div class="nav__end">
+        <button class="nav__search" type="button" onclick="PotentialSearch.open()" aria-label="快速跳转">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.4"/><path d="M16 16l4.4 4.4"/></svg>
+          <kbd>⌘K</kbd>
+        </button>
+        <a class="nav__cta" href="join.html">2026 招新</a>
+        <button class="nav__toggle" type="button" aria-label="打开菜单" aria-expanded="false"><span></span></button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="nav__drawer" aria-label="移动端导航">
+  <a href="index.html"><span>首页</span><span>01</span></a>
+  <a href="about.html"><span>战队</span><span>02</span></a>
+  <a href="robots.html"><span>机甲与团队</span><span>03</span></a>
+  <a href="gallery.html"><span>影像</span><span>04</span></a>
+  <a href="results.html"><span>战绩</span><span>05</span></a>
+  <a href="hall.html"><span>名人堂</span><span>06</span></a>
+  <a href="join.html"><span>加入我们</span><span>07</span></a>
+</div>
+<div class="page">
+<main id="main">
+
+  <section class="page-hero" data-watermark="Gallery">
+    <div class="wrap">
+      <div class="page-hero__inner">
+        <nav class="crumbs" aria-label="面包屑">
+          <a href="index.html">首页</a><span>/</span><span>影像</span>
+        </nav>
+        <h1 class="h1">影像</h1>
+        <p class="lead page-hero__lead">
+          赛场、机房与深夜的工位。这里记录战队真实的样子——
+          照片由队员随时补充，随时更新。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:clamp(36px,4.4vw,64px)">
+    <div class="wrap" id="galleryApp">
+
+      <div class="album-strip" id="albumStrip"></div>
+
+      <div class="gallery-bar" id="galleryBar" hidden>
+        <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="按相册筛选"></div>
+        <div class="gallery-bar__count"><b id="galleryCount">0</b> 张照片<span class="gallery-bar__hint"> · 点击放大 · ← → 翻页</span></div>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid"></div>
+
+      <div class="empty" id="galleryEmpty" hidden style="margin-top:24px">
+        <p class="js-admin-only">画廊还没有照片。管理员可在 <a class="tlink" href="admin.html">图片管理后台</a> 上传。</p>
+        <p class="js-public-only">照片正在整理中，敬请期待。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html">
+          <img class="brand__mark" src="assets/img/logo-mark.png" alt="" width="26" height="29" />
+          <span class="brand__text">
+            <span class="brand__name">Potential</span>
+            <span class="brand__sub">南京邮电大学 · 机甲大师</span>
+          </span>
+        </a>
+        <p>潜心高远，此志无双。<br />南京邮电大学 RoboMaster 机甲大师战队，由工程实验教学部创建并指导。</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="about.html">战队简介</a></li>
+          <li><a href="robots.html">机甲与团队</a></li>
+          <li><a href="results.html">战绩与赛季</a></li>
+          <li><a href="join.html">加入我们</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="https://space.bilibili.com/3546863781283927" target="_blank" rel="noopener">B 站 · 南邮 Potential 战队</a></li>
+          <li><span>南京邮电大学仙林校区</span></li>
+          <li><span>南京市栖霞区文苑路 9 号</span></li>
+          <li><span>依托 · 工程实验教学部</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span data-year>2026</span> NJUPT Potential Robotics Team · 本站为校内展示用途</span>
+      <span class="footer-bottom__note">RoBoMaster is a trademark of DJI</span>
+    </div>
+
+    <div class="footer-wordmark">
+      <a class="footer-top" href="#top">回到顶部
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V4M4 8l4-4 4 4"/></svg>
+      </a>
+      <img src="assets/img/logo-word-2x.png" alt="" aria-hidden="true" />
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="assets/js/palette.js?v=3" defer></script>
+<script src="assets/js/site.js?v=3" defer></script>
+<script src="assets/js/gallery.js?v=3" defer></script>
+</body>
+</html>

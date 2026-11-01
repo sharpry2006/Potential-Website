@@ -1,0 +1,13 @@
+# 构建产物
+dist/
+
+# 后台本地配置（含密码）
+tools/admin.json
+
+# 数据备份与回收站
+assets/data/*.bak
+assets/img/gallery/.trash/
+
+# 系统文件
+.DS_Store
+Thumbs.db
