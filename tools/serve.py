@@ -255,7 +255,7 @@ def process_member_avatar(src_bytes, orig_name):
         name = "%s-%s.webp" % (slugify(orig_name)[:24], uuid.uuid4().hex[:8])
         out = os.path.join(MEMBER_DIR, name)
         run([convert_bin(), tmp_in, "-auto-orient", "-gravity", "center",
-             "-resize", "480x480^", "-extent", "480x480",
+             "-resize", "1200x1500^", "-extent", "1200x1500",
              "-strip", "-quality", "82", "-define", "webp:method=5", out])
     finally:
         try:

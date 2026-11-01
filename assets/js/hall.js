@@ -162,27 +162,22 @@
         return current === 'all' || (m.season || '其他') === current;
       });
 
-      grid.innerHTML = items.map(function (m) {
+      grid.innerHTML = items.map(function (m, i) {
         var initial = (m.name || '?').trim().slice(0, 1);
-        var avatar = m.avatar
-          ? '<img src="' + esc(m.avatar) + '" alt="' + esc(m.name) + '" loading="lazy" />'
-          : initial;
-        return ''
-          + '<article class="member">'
-          + '  <div class="member__top">'
-          + '    <div class="member__avatar">' + avatar + '</div>'
-          + '    <div class="member__id">'
-          + '      <div class="member__name">' + esc(m.name) + '</div>'
-          + (m.role ? '<div class="member__role">' + esc(m.role) + '</div>' : '')
-          + '    </div>'
-          + '  </div>'
-          + (m.note ? '<p class="member__note">' + esc(m.note) + '</p>' : '')
-          + '  <div class="member__meta">'
-          + (m.direction ? '<span class="member__chip">' + esc(m.direction) + '</span>' : '')
-          + (m.season ? '<span class="member__chip">' + esc(m.season) + '</span>' : '')
-          + (m.nick ? '<span class="member__chip">' + esc(m.nick) + '</span>' : '')
-          + '  </div>'
-          + '</article>';
+        var photo = m.avatar
+          ? '<img src="' + esc(m.avatar) + '" alt="' + esc(m.name) + '" loading="lazy" decoding="async" />'
+          : '<span class="fm__init" aria-hidden="true">' + initial + '</span>';
+        var chips = [m.direction, m.season, m.nick].filter(Boolean).map(function (c) {
+          return '<span class="fm__chip">' + esc(c) + '</span>';
+        }).join(' ');
+        return '<article class="fm' + (i === 0 && items.length < 4 ? ' fm--lead' : '') + '">'
+          + '<div class="fm__photo">' + photo + '</div>'
+          + '<div class="fm__body">'
+          + (m.role ? '<div class="fm__role">' + esc(m.role) + '</div>' : '')
+          + '<h3 class="fm__name">' + esc(m.name) + '</h3>'
+          + (m.note && m.note !== m.role ? '<p class="fm__note">' + esc(m.note) + '</p>' : '')
+          + '<div class="fm__chips">' + chips + '</div>'
+          + '</div></article>';
       }).join('');
     }
 
