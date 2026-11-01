@@ -47,6 +47,7 @@ const head = (title, desc, file) => `<!DOCTYPE html>
 <link rel="preload" href="assets/fonts/ptsans-cn-regular.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="assets/fonts/grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/style.css?v=3" />
+<link rel="stylesheet" href="assets/css/motion.css?v=1" />
 </head>
 <body>
 <a class="skip-link" href="#main">跳到主要内容</a>
@@ -137,6 +138,7 @@ const footer = `
 
 <script src="assets/js/palette.js?v=3" defer></script>
 <script src="assets/js/site.js?v=3" defer></script>
+<script src="assets/js/motion.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
 </html>
@@ -1201,7 +1203,21 @@ const pages = [
   ['join.html', 'join.html', '加入我们 · POTENTIAL 南京邮电大学机甲大师战队', 'POTENTIAL 战队招新：机械、电控、视觉、软件、运营五个方向面向全校招募，无需基础，带训上岗。', joinBody]
 ];
 
-for (const [file, active, title, desc, body] of pages) {
+const band = (items) => `<div class="photo-band" data-reveal>
+${items.map(([n, alt, cap], i) => `  <figure class="pband"><img src="assets/img/team/thumbs/${n}.webp" alt="${alt}" width="720" height="480" loading="lazy" decoding="async" /><figcaption><span>${String(i + 1).padStart(2, '0')}</span>${cap}</figcaption></figure>`).join('')}
+</div>
+`;
+const BANDS = {
+  'about.html': ['<div class="feature-row">', [['robot-3-side', '三号机器人侧视', '机甲 · 侧视'], ['chassis-bench', '底盘台架调试', '底盘 · 台架调试'], ['sunset-team', '暮色中的队员合影', '队员 · 暮色']]],
+  'robots.html': ['<div class="split split--reverse">', [['infantry-front', '步兵机器人正面', '步兵 · 正面'], ['pit-gimbal', '云台特写', '云台 · 特写'], ['armor-led-red', '红方装甲灯条', '装甲灯条 · 红方']]],
+  'results.html': ['<div class="feature-row">', [['award-group', '领奖合影', '领奖台 · 合影'], ['shanghai-group', '战队合影', '战队 · 合影'], ['arena-fix', '赛场检修', '赛场 · 检修']]],
+  'hall.html': ['<div class="split">', [['award-cert', '获奖证书', '证书 · 荣誉'], ['school-crew', '校园合影', '队员 · 校园'], ['night-lab-group', '夜间实验室合影', '实验室 · 深夜']]],
+  'join.html': ['<div class="card-grid">', [['tune-group', '集体调试', '集体 · 调试'], ['debug-crew', '调试小组', '调试小组'], ['field-repair', '场边检修', '场边 · 检修']]]
+};
+for (const [file, active, title, desc, body0] of pages) {
+  let body = body0;
+  const bd = BANDS[file];
+  if (bd) { const at = body.indexOf(bd[0]); if (at < 0) throw new Error('band marker missing: ' + file); body = body.slice(0, at) + band(bd[1]) + body.slice(at); }
   writeFileSync(pjoin(root, file), page(active, title, desc, body), 'utf8');
   console.log('wrote', file);
 }
