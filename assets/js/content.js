@@ -36,11 +36,18 @@
       if (!e || typeof e.t !== 'string') return;
       if (read(el) === e.o) write(el, e.t);
     });
+    var im = (data && data.images) || {};
+    document.querySelectorAll('[data-cms-img]').forEach(function (el) {
+      var e = im[el.getAttribute('data-cms-img')];
+      if (!e || el.getAttribute('src') !== e.o) return;
+      el.removeAttribute('srcset');
+      el.src = e.t;
+    });
   }
 
   window.PotentialCMS = { read: read, write: write };
 
-  if (document.querySelector('[data-cms]')) {
+  if (document.querySelector('[data-cms], [data-cms-img]')) {
     fetch('assets/data/content.json', { cache: 'no-store' })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(apply)

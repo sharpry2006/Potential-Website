@@ -11,7 +11,8 @@
     'pg-robots': { src: 'strike', bg: 1, S: 1.2, cy: 26, ink: [.62, .78, 1], pul: [.45, .8, 1], hot: [1, .4, .3], fl: .4, th: .32, bs: 1.2 },
     'pg-about': { src: 'ac', bg: 2, S: 1.32, cy: 28, ink: [.8, .84, .92], pul: [1, .96, .9], hot: [1, 1, 1], fl: 1, vg: 1, th: .34, bs: 1.25 },
     'pg-gallery': { src: 'stargazer', bg: 3, S: 1.25, cy: 26, ink: [.5, .52, .62], pul: [1, .82, .3], hot: [1, .85, .25], fl: .3, th: .3, bs: 1.4 },
-    'pg-results': { src: 'unicorn', bg: 4, S: 1.0, ox: .4, cy: 26, ink: [.78, .85, 1], pul: [.4, .85, 1], hot: [.4, .7, 1], fl: .5, th: .32, bs: 1.3, ag: 3.6 }
+    'pg-results': { src: 'unicorn', bg: 4, S: 1.0, ox: .4, cy: 26, ink: [.78, .85, 1], pul: [.4, .85, 1], hot: [.4, .7, 1], fl: .5, th: .32, bs: 1.3, ag: 3.6 },
+    'pg-join': { src: 'majia', bg: 3, S: 1.02, ox: .36, oy: .24, cy: 30, ink: [.5, .6, .9], pul: [.5, .95, .9], hot: [.55, .8, 1], fl: .3, th: .34, bs: 1.15, ag: .8 }
   };
   var cfg = null;
   for (var k in PAGES) if (B.contains(k)) cfg = PAGES[k];
@@ -55,9 +56,9 @@ else{float n=fbm(vec2(pm.x*1.2,pm.y*3.-T*.05));float rays=pow(n2(vec2(atan(c.y,c
 col=1.-exp(-col*1.4);gl_FragColor=vec4(col,1.);}`;
 
   var LV = `attribute vec2 a_p;attribute vec2 a_sr;attribute vec4 a_c;
-uniform vec2 R;uniform float S;uniform float O;
+uniform vec2 R;uniform float S;uniform float O;uniform float OY;
 varying vec2 vsr;varying vec4 vc;varying vec2 vp;varying vec2 vq;
-void main(){float A=R.x/R.y;vec2 p=(a_p-.5)*vec2(2.,-2.)*S;p.x=p.x/A+O;gl_Position=vec4(p,0.,1.);vsr=a_sr;vc=a_c;vp=p;vq=a_p;}`;
+void main(){float A=R.x/R.y;vec2 p=(a_p-.5)*vec2(2.,-2.)*S;p.x=p.x/A+O;p.y+=OY;gl_Position=vec4(p,0.,1.);vsr=a_sr;vc=a_c;vp=p;vq=a_p;}`;
   var LF = `precision highp float;
 uniform vec2 R;uniform float T;uniform vec2 M;uniform vec3 INK;uniform vec3 PUL;uniform float FL;uniform float VG;uniform float CY;
 varying vec2 vsr;varying vec4 vc;varying vec2 vp;varying vec2 vq;
@@ -75,7 +76,7 @@ vec3 col=base*(1.+mg*2.5+sw*FL*2.)+PUL*(pul*1.8+pul2)*(.6+k)+PUL*tip*2.5+vec3(1.
 gl_FragColor=vec4(col*vis*outv*vg,1.);}`;
 
   var DV = `attribute vec2 a_p;attribute vec4 a_c;attribute vec2 a_st;
-uniform vec2 R;uniform float T;uniform vec2 M;uniform float S;uniform float O;uniform float D;uniform float CY;uniform vec3 HOT;uniform float VG;uniform float AG;
+uniform vec2 R;uniform float T;uniform vec2 M;uniform float S;uniform float O;uniform float D;uniform float CY;uniform vec3 HOT;uniform float VG;uniform float AG;uniform float OY;
 varying vec3 vc;varying float va;
 vec2 fld(vec2 p,float t){return vec2(sin(p.y*3.1+t*.3)+.6*sin(p.y*7.3-t*.23+p.x*2.),cos(p.x*2.7-t*.27)+.6*cos(p.x*6.1+t*.19-p.y*1.5));}
 void main(){float A=R.x/R.y;float sd=a_st.x;float tt=fract(T/CY);
@@ -89,7 +90,7 @@ else{float ac=step(1.5,a_st.y);float br=.55+.45*sin(T*1.4+a_p.x*9.+a_p.y*5.+sd*3
  br=mix(br,.45+1.1*pow(max(0.,sin(T*2.6-(a_p.x+a_p.y*.4)*28.+sd*1.5)),6.)+.25*sin(T*7.+sd*40.),ac);b+=fld(b*2.+sd,T)*bu*.6;
  b+=(vec2(sd,fract(sd*7.3))-.5)*.004*ac*sin(T*3.+sd*20.);
  al=br*(1.-bu*.6)*(1.+AG*ac);sz=(2.+3.*a_c.a)*D*(1.+.4*br)*(1.-.35*ac);c=mix(a_c.rgb,HOT,.5*(1.-ac));}
-b.x=b.x/A+O;
+b.x=b.x/A+O;b.y+=OY;
 vec2 d=(b-M)*vec2(A,1.);float f=exp(-dot(d,d)*30.);b+=normalize(d+1e-4)*vec2(1./A,1.)*f*.05;
 float vg=mix(1.,1.-smoothstep(.36,.62,length((a_p-.5)*vec2(1.,1.5))),VG);
 gl_Position=vec4(b,0.,1.);gl_PointSize=sz;vc=c;va=al*vg*(1.+f);}`;
@@ -213,7 +214,7 @@ void main(){float a=1.;if(PTS>.5){vec2 d=gl_PointCoord-.5;float r=dot(d,d)*4.;if
 
   // mecha: bufA = line segments (GL_LINES pairs), bufB = dust (first nDust, drawn into trails) + emissive points
   function lines() {
-    fetch('assets/fx/' + cfg.src + '_lines.bin?v=6').then(function (res) { if (!res.ok) throw new Error(res.status); return res.arrayBuffer(); }).then(function (buf) {
+    fetch('assets/fx/' + cfg.src + '_lines.bin?v=9').then(function (res) { if (!res.ok) throw new Error(res.status); return res.arrayBuffer(); }).then(function (buf) {
       var dv = new DataView(buf), V = dv.getUint32(0, true), E = dv.getUint32(4, true), L = [], Dd = [], r = rng(11), i, o;
       var step = Math.max(1, Math.ceil(V / 16000));
       function vert(o) {
@@ -288,7 +289,7 @@ void main(){float a=1.;if(PTS>.5){vec2 d=gl_PointCoord-.5;float r=dot(d,d)*4.;if
   function draw(t) {
     if (!ready || !scene) return;
     var w = cv.width, h = cv.height, O = off();
-    var com = { R: [w, h], T: t, M: [mx, my], O: O, S: cfg.S || 1, D: D, CY: cfg.cy, HOT: cfg.hot || [1, 1, 1], VG: cfg.vg || 0, AG: cfg.ag || .6 };
+    var com = { R: [w, h], T: t, M: [mx, my], O: O, S: cfg.S || 1, D: D, CY: cfg.cy, HOT: cfg.hot || [1, 1, 1], VG: cfg.vg || 0, AG: cfg.ag || .6, OY: window.innerWidth < 760 ? 0 : (cfg.oy || 0) };
     // 1. feedback trails: fade the previous frame, add moving bodies / dust
     target(trail);
     gl.enable(gl.BLEND);

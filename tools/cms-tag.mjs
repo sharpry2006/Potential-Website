@@ -10,6 +10,7 @@ const TEXT = new Set(['h1', 'h2', 'h3', 'h4', 'p', 'summary', 'span', 'b', 'smal
 const VOID = new Set(['br', 'img', 'meta', 'link', 'input', 'hr', 'source']);
 const Q = String.fromCharCode(34);
 const KEY = ' data-cms=' + Q;
+const IKEY = ' data-cms-img=' + Q;
 const TAGRE = new RegExp('<(/?)([a-zA-Z][a-zA-Z0-9]*)([^>]*)>', 'y');
 
 function hasLetter(s) {
@@ -27,10 +28,12 @@ function textOf(s) {
   return out;
 }
 function strip(html) {
-  let i;
-  while ((i = html.indexOf(KEY)) >= 0) {
-    const j = html.indexOf(Q, i + KEY.length);
-    html = html.slice(0, i) + html.slice(j + 1);
+  for (const key of [KEY, IKEY]) {
+    let i;
+    while ((i = html.indexOf(key)) >= 0) {
+      const j = html.indexOf(Q, i + key.length);
+      html = html.slice(0, i) + html.slice(j + 1);
+    }
   }
   return html;
 }
@@ -43,6 +46,7 @@ function tag(html, page) {
   const stack = [];
   const edits = [];
   const counters = {};
+  const imgs = {};
   let pos = 0;
   for (;;) {
     const lt = html.indexOf('<', pos);
@@ -70,6 +74,11 @@ function tag(html, page) {
       if (top) {
         if (name === 'svg') top.svg = true;
         else if (name !== 'br' && !top.inSvg) top.child = true;
+      }
+      if (name === 'img' && attrs.includes(' src=' + Q + 'assets/img/') && !(top && top.inSvg)) {
+        const prefix = top && top.site ? 'site' : page;
+        imgs[prefix] = (imgs[prefix] || 0) + 1;
+        edits.push([lt + 4, IKEY + prefix + '.img' + imgs[prefix] + Q]);
       }
       if (VOID.has(name) || attrs.trim().endsWith('/')) continue;
       stack.push({

@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>图片管理 · POTENTIAL 战队官网</title>
+<title>内容管理 · POTENTIAL 战队官网</title>
 <meta name="robots" content="noindex, nofollow" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23090a0d'/%3E%3Cpath d='M9 24V8h7a5 5 0 0 1 0 10h-7' fill='none' stroke='%23ff3d2e' stroke-width='2.4' stroke-linecap='square'/%3E%3C/svg%3E" />
 <link rel="preload" href="assets/fonts/noto-sans-sc-400.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="assets/css/style.css?v=4" />
 <link rel="stylesheet" href="assets/css/admin.css?v=3" />
-<link rel="stylesheet" href="assets/css/admin-content.css?v=1" />
+<link rel="stylesheet" href="assets/css/admin-content.css?v=2" />
 </head>
 <body class="admin-body">
 
@@ -17,8 +17,8 @@
 <div class="login-screen" id="loginScreen" hidden>
   <form class="login-card" id="loginForm" autocomplete="on">
     <img class="login-card__mark" src="assets/img/logo-mark.png" alt="" />
-    <h1>图片管理后台</h1>
-    <p>上传照片、整理相册、挑选首页大图。所有改动自动保存。</p>
+    <h1>内容管理后台</h1>
+    <p>管理网站文字、页面图片、相册与名人堂。</p>
     <label class="field">
       <span>管理密码</span>
       <input type="password" id="password" name="password" required autofocus autocomplete="current-password" placeholder="默认 potential2026" />
@@ -35,7 +35,7 @@
     <div class="admin-head__brand">
       <img src="assets/img/logo-mark.png" alt="" />
       <div>
-        <strong>图片管理</strong>
+        <strong>内容管理</strong>
         <span>POTENTIAL · 战队官网</span>
       </div>
     </div>
@@ -47,9 +47,11 @@
     </div>
   </header>
 
+  <div class="admin-grid">
+  <nav class="admin-nav" id="adminNav" aria-label="后台导航"></nav>
   <div class="admin-wrap">
     <!-- 上传 -->
-    <section class="panel">
+    <section class="panel" data-nav="相册照片" data-nav-id="photos">
       <div class="panel__head panel__head--row">
         <div>
           <h2>上传照片</h2>
@@ -76,7 +78,7 @@
     </section>
 
     <!-- 首屏轮播 -->
-    <section class="panel">
+    <section class="panel" data-nav="首页轮播" data-nav-id="hero">
       <div class="panel__head panel__head--row">
         <div>
           <h2>首屏轮播 <em id="heroCount">0</em></h2>
@@ -101,7 +103,7 @@
     </section>
 
     <!-- 列表 -->
-    <section class="panel">
+    <section class="panel" data-nav="相册照片" data-nav-id="photos">
       <div class="panel__head panel__head--row">
         <div>
           <h2>图片库 <em id="imgCount">0</em></h2>
@@ -154,7 +156,7 @@
     </section>
 
     <!-- 名人堂 -->
-    <section class="panel" id="hall">
+    <section class="panel" id="hall" data-nav="名人堂" data-nav-id="hall">
       <div class="panel__head panel__head--row">
         <div>
           <h2>名人堂 <em id="hallCount">0</em></h2>
@@ -186,7 +188,7 @@
     </section>
 
     <!-- 网站文字 -->
-    <section class="panel" id="cms">
+    <section class="panel" id="cms" data-nav="网站文字" data-nav-id="text">
       <div class="panel__head">
         <h2>网站文字 <em id="cmsCount">0</em></h2>
         <div class="panel__hint">选择页面，直接改写标题、段落、按钮与页脚文字。换行会保留；保存后刷新网站即生效。</div>
@@ -202,8 +204,22 @@
       <div class="cms-list" id="cmsList"></div>
     </section>
 
+    <!-- 页面图片 -->
+    <section class="panel" id="pageimgs" data-nav="页面图片" data-nav-id="images">
+      <div class="panel__head">
+        <h2>页面图片 <em id="imgCmsCount">0</em></h2>
+        <div class="panel__hint">各页面固定位置的图片（Logo、机甲与团队照片、媒体封面等）。点「替换」上传新图，保存后刷新网站即生效，随时可以还原。画廊照片请到「相册照片」里管理。</div>
+      </div>
+      <div class="cms-bar">
+        <select id="imgPage" aria-label="选择页面"></select>
+        <span class="cms-status" id="imgStatus"></span>
+        <button class="btn btn--primary btn--sm" type="button" id="imgSave">保存图片</button>
+      </div>
+      <div class="img-grid" id="imgGrid"></div>
+      <input type="file" id="imgFile" accept="image/*" hidden />
+    </section>
     <!-- 相册 -->
-    <section class="panel">
+    <section class="panel" data-nav="相册与设置" data-nav-id="albums">
       <div class="panel__head">
         <h2>相册</h2>
         <div class="panel__hint">相册即画廊页上的分类；封面可在下拉里挑一张。</div>
@@ -218,6 +234,7 @@
       </div>
     </section>
   </div>
+  </div>
 
   <!-- 撤销条 -->
   <div class="undo" id="undoBar" hidden>
@@ -228,8 +245,9 @@
   <div class="toast" id="toast" hidden></div>
 </div>
 
-<script src="assets/js/content.js?v=1" defer></script>
-<script src="assets/js/admin-content.js?v=1" defer></script>
+<script src="assets/js/content.js?v=2" defer></script>
+<script src="assets/js/admin-content.js?v=2" defer></script>
+<script src="assets/js/admin-shell.js?v=1" defer></script>
 <script src="assets/js/admin.js?v=3" defer></script>
 </body>
 </html>

@@ -305,6 +305,27 @@ def parse_multipart(body, boundary):
     return out
 
 
+SITE_IMG_DIR = os.path.join(ROOT, "assets", "img", "site")
+
+
+def process_site_image(data, filename):
+    """页面固定图片的替换图：统一转成 webp（保留透明通道），长边不超过 2400，文件名随机。"""
+    ext = os.path.splitext(filename)[1].lower()
+    if ext not in ALLOWED_EXT:
+        raise ValueError("不支持的图片格式")
+    os.makedirs(SITE_IMG_DIR, exist_ok=True)
+    fd, src = tempfile.mkstemp(suffix=ext)
+    os.write(fd, data)
+    os.close(fd)
+    name = uuid.uuid4().hex[:12] + ".webp"
+    try:
+        run([convert_bin(), src + "[0]", "-auto-orient", "-resize", "2400x2400>", "-strip", "-quality", "86",
+             os.path.join(SITE_IMG_DIR, name)])
+    finally:
+        os.unlink(src)
+    return "assets/img/site/" + name
+
+
 TEAM_DIR = os.path.join(ROOT, "assets", "img", "team")
 
 
@@ -548,6 +569,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if not data:
                 continue
             try:
+                if target == "site":
+                    added.append({"file": process_site_image(data, filename)})
+                    continue
                 if target == "members":
                     path = process_member_avatar(data, filename)
                     added.append({"file": path})
@@ -572,7 +596,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             except Exception as e:
                 errors.append("%s：%s" % (filename, e))
 
-        if target == "members":
+        if target in ("members", "site"):
             return self._json({"ok": True, "files": added, "errors": errors})
 
         state = load_state()
@@ -713,7 +737,19 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if not o or t == o:
                 continue
             entries[k] = {'o': o, 't': t}
-        out = {'version': 1, 'entries': entries}
+        images = {}
+        raw_img = data.get('images')
+        if isinstance(raw_img, dict):
+            for k, v in raw_img.items():
+                k = str(k)
+                if not (0 < len(k) <= 40) or not all(c.isalnum() or c in '._-' for c in k) or not isinstance(v, dict):
+                    continue
+                o, t = str(v.get('o') or '')[:300], str(v.get('t') or '')[:300]
+                # 替换图只能指向站内 assets/img/ 下已存在的文件
+                if not o or t == o or not t.startswith('assets/img/') or '..' in t or not os.path.isfile(os.path.join(ROOT, t)):
+                    continue
+                images[k] = {'o': o, 't': t}
+        out = {'version': 1, 'entries': entries, 'images': images}
         with _write_lock:
             os.makedirs(os.path.dirname(CONTENT_FILE), exist_ok=True)
             tmp = CONTENT_FILE + '.tmp'
@@ -725,7 +761,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
                 except Exception:
                     pass
             os.replace(tmp, CONTENT_FILE)
-        return self._json({'ok': True, 'count': len(entries)})
+        return self._json({'ok': True, 'count': len(entries), 'images': len(images)})
 
     def _delete(self):
         if not self._require_admin():

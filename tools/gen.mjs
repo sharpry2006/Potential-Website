@@ -142,7 +142,7 @@ const footer = `
 <script src="assets/js/vortex.js?v=1" defer></script>
 <script src="assets/js/gargantua.js?v=1" defer></script>
 <script src="assets/js/endurance.js?v=2" defer></script>
-<script src="assets/js/flowfx.js?v=7" defer></script>
+<script src="assets/js/flowfx.js?v=12" defer></script>
 <script src="assets/js/content.js?v=1" defer></script>
 <script src="assets/js/gallery.js?v=3" defer></script>
 </body>
